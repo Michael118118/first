@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui/mui.min.css" rel="stylesheet" />
+		<link href="css/common/common.css" rel="stylesheet" />
+		<link href="css/common/iconfont.css" rel="stylesheet" />
+		<style>
+			.mui-content{
+				font-size:14px;		
+			}
+			.mui-input-group .mui-input-row {
+			    height: 44px;
+			}
+			.mui-input-clear{
+				font-size:14px;				
+			}
+			.mui-input-row label {
+			    width: 70px;
+			    padding:0px 10px;
+			    line-height:44px;
+			}
+			
+			.inp-password{
+				width:65%;
+				height:44px;
+			}
+			.span-password{
+				color:lightgray;
+			}
+			
+			#btnShow {
+			    width: 80px;
+			    height: 30px;
+			    margin-top: 5px;
+			    padding: 0px;
+			    border: 0px;
+			    /*border-left:1px solid rgb(153, 153, 153);*/
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">设置新密码</h1>
+		</header>
+		<div class="mui-content" style="width:100%;margin-top: 44px;">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<div class="mui-content-padded">
+						<div id="mainForm" class="mui-input-group">
+							<div id="divContent" class="mui-input-row">
+								<div id="divPassBox" class="inp-password" style="float:left;width:60%;position:relative;">
+									<input id="newPassBox" type="password" class="mui-input-clear" style="width:99%;" placeholder="请输入新密码" />	
+								</div>								
+								<div style="float:right;width:40px;">
+									<span id="showPass" class="iconfont icon-chakanmima span-password" style="float:right;"></span>	
+								</div>						
+							</div>
+							<div id="divContent" class="mui-input-row">
+								<div id="divrePassBox" class="inp-password" style="float:left;width:60%;position:relative;">
+									<input id="rePassBox" type="password" class="mui-input-clear" style="width:99%;" placeholder="请重新输入密码" />	
+								</div>								
+								<div style="float:right;width:40px;">
+									<span id="showrePass" class="iconfont icon-chakanmima span-password" style="float:right;"></span>	
+								</div>						
+							</div>
+						</div>
+						<div style="margin-top:10px;">
+							<button id='btnSubmit' class="mui-btn mui-btn-block mui-btn-primary" style="padding:10px 0;font-size:14px;">修改密码</button>
+							<!--<button id='btnBack2Login' class="mui-btn mui-btn-block mui-btn-primary" style="padding:10px 0;font-size:14px;">返回登录</button>-->
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+		<script src="js/mui/mui.min.js"></script>
+		<script src="js/common/app.js"></script>
+		<script src="js/common/utils.js"></script> 
+		<script src="js/common/md5.min.js"></script>
+		<script>
+			(function($, doc) {
+				// 重置宽度
+				var divPassBoxWidth = doc.getElementById('divContent').clientWidth - 40;
+				doc.getElementById('divPassBox').style.width = divPassBoxWidth + 'px';
+				doc.getElementById('divrePassBox').style.width = divPassBoxWidth + 'px';
+				
+				$.init({
+					swipeBack: true
+				});
+				mui('.mui-scroll-wrapper').scroll();
+				$.plusReady(function() {					
+					var webview = plus.webview.currentWebview();
+					if(webview.mobile == undefined || webview.mobile == ''){
+						plus.nativeUI.toast("参数错误！");
+						webview.close();
+					}
+					var mobile = webview.mobile;
+					if(webview.verify_code == undefined || webview.verify_code == ''){
+						plus.nativeUI.toast("验证码无效，请检查！");
+						webview.close();
+					}
+					var verify_code = webview.verify_code;					
+					var state = app.getState();
+					var appVersion = '';
+					app.getAppVersion(function(version){
+						appVersion = version;
+					});
+					// 显示密码为明文或密文
+					doc.getElementById('showPass').addEventListener('tap', function(){
+						if(doc.getElementById('newPassBox').type == 'password'){
+							doc.getElementById('newPassBox').type = 'text';	
+						}else{
+							doc.getElementById('newPassBox').type = 'password';	
+						}					
+					})
+					doc.getElementById('showrePass').addEventListener('tap', function(){
+						if(doc.getElementById('rePassBox').type == 'password'){
+							doc.getElementById('rePassBox').type = 'text';	
+						}else{
+							doc.getElementById('rePassBox').type = 'password';	
+						}
+					})
+					
+					// 提交修改密码
+					doc.getElementById('btnSubmit').addEventListener('tap', function(){
+						if(mobile == ''){
+							plus.nativeUI.toast("参数错误！");
+						    webview.close();
+						    return;
+						}
+						if(doc.getElementById('newPassBox').value == ''){
+							plus.nativeUI.toast("密码不能为空！");
+						    return;
+						}
+						if(doc.getElementById('newPassBox').value != doc.getElementById('rePassBox').value){
+							plus.nativeUI.toast("两次输入密码不一致，请检查！");
+							return;
+						}
+						param = {};
+						param.userid = state.userid;
+						param.sessionid = state.sessionid;
+						param.companyid = state.companyid;
+						param.uuid = plus.device.uuid,
+						param.model = plus.device.model,
+						param.vendor = plus.device.vendor,
+						param.os_name = plus.os.name,
+						param.os_version = plus.os.version,
+						param.os_vendor = plus.os.vendor,
+						param.app_version = appVersion,
+						plus.nativeUI.showWaiting("请等待...");
+						param.mobile = mobile;
+						param.verify_type = 'forget_pass';
+						param.verify_code = verify_code;
+						param.no_checkremove = 1;
+						param.password = SparkMD5.hash(doc.getElementById('newPassBox').value); 
+						app.ajax('/user/LoginMobile/reSetPasswordByMobile', param, function(data) {
+							plus.nativeUI.closeWaiting();
+							if (data.s == "ok") {
+								var parentPage = plus.webview.currentWebview().opener();
+								parentPage.close();
+								plus.webview.currentWebview().close();
+								plus.nativeUI.toast("修改成功！");
+							} else {
+								plus.nativeUI.toast("修改失败," + data.s + "！");
+							}
+						});					
+					})
+					
+					webview.show('slide-in-right');
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

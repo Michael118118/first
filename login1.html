@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html class="ui-page-login" style="width:100%;height:100%;">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录</title>
+		<link href="css/mui/mui.min.css" rel="stylesheet" />
+		<link href="css/common/iconfont.css" rel="stylesheet" />
+		<link href="css/mui/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/mui/mui.poppicker.css" rel="stylesheet" />
+		<style type="text/css">
+			.line {
+				position: relative;
+				height: 50px;
+				line-height: 50px;
+				border-bottom: solid 1px #0287E4;
+				padding-left: 60px;
+			}
+			
+			.line label {
+				width: 60px;
+				height: 49px;
+				line-height: 55px;
+				display: block;
+				text-align: center;
+				vertical-align: middle;
+				position: absolute;
+				left: 0;
+			}
+			
+			.line input {
+				border: 0 !important;
+				margin: 0 !important;
+				padding: 0 !important;
+				width: 100%;
+				display: block !important;
+				height: 49px;
+				line-height: 49px !important;
+			}
+			
+			#divVerify {
+				min-width: 90vw;
+				height: 300px;
+				top: 50% !important;
+				margin-top: -150px;
+				left: 50% !important;
+				margin-left: -45vw;
+				opacity: 1;
+			}
+			
+			.mui-btn-red {
+				width: 90vw;
+			}
+			
+			#btnGetVerify:hover {
+				background-color: #f1f1f1 !important;
+				color: #000000 !important;
+			}
+			.line .mui-icon-eye{
+				margin-top:5px; 
+			}
+			
+			.mui-input-row label{
+				padding:0px;
+			}
+			
+			.mui-icon-eye{
+				font-size: 20px;
+			    position: absolute;
+			    z-index: 1;
+			    top: 10px;
+			    right: 0;
+			    width: 38px;
+			    height: 38px;
+			    text-align: center;
+			    color: #999;
+			}
+		</style>
+	</head>
+
+	<body id="body" style="width:100%;height:100%;min-height:500px;background-color:#fff;text-align: center;">
+		<div style="position:relative;width:100%;height:240px;padding-top:50px;background-color:#0287E4;">
+			<div>
+				<!--display:inline-block;-->
+				<img style="position:relative;width:160px;" src="images/logo.png" />
+			    <h2 style="position:relative;color:#ffffff;margin-top:15px;font-family:serif;">检测唯一码</h2>
+			</div>			
+		</div>
+		<div id="form" style="position: relative;width:auto;padding:18px 30px;">
+			<div class="line">
+				<label><span class="mui-icon iconfont icon-wo" style="font-size:24px;color:#0287E4;padding:0;"></span></label>
+				<input id='account' type="text" class="mui-input" value="" placeholder="请输入账号">
+			</div>
+			<div class="line mui-input-row mui-password">
+				<label><span class="mui-icon iconfont icon-mima" style="font-size:24px;color:#0287E4;padding:0;"></span></label>
+				<input id='password' type="password" class="mui-input" style="float:left;" value="" placeholder="请输入密码">
+			    <span class="mui-icon mui-icon-eye" id="spanEye" style="display:none;"></span> 
+			</div> 
+			<div class="mui-input-row">
+				<button id='login' class="mui-btn mui-btn-block mui-btn-outlined mui-btn-primary" style="width:100%;margin-top:30px;border:solid 1px #0287E4;padding:8px;font-size:20px;border-radius:0;color:#0287E4;">登录</button>
+			</div>
+			<div style="padding-top:20px;position:absolute;width: calc(100% - 60px);">
+				<a id='showCityPicker' style="font-size:15px;padding:0 3px;color:#0287E4;float:left;">请选择站点</a>
+				<a id='forgetPass' style="font-size:15px;padding:0 3px;color:#0287E4;float:right;">忘记密码</a>
+				<a id='register' style="font-size:15px;padding:0 3px;color:#0287E4;float:right;margin-right:10px;">用户注册</a>				
+			</div>
+		</div>
+		<div style="position:relative;width:100%;height:40px;line-height:40px;color:#f1f1f1;background-color:#0287E4;font-size:14px;">
+			© 2018 山东联房信息技术有限公司
+		</div>		
+	</body>
+	<script src="js/mui/mui.min.js"></script>
+	<script src="js/common/utils.js"></script>
+	<script src="js/common/app.js"></script>
+	<script src="js/common/md5.min.js"></script>
+	<script src="js/common/HashTable.js"></script>
+	<script src="js/mui/mui.picker.min.js"></script>
+	<script src="js/mui/mui.poppicker.js"></script>
+	<script type="text/javascript">
+		(function($, doc) {
+			$.init();
+			//计算页面高度，设置底部条的位置
+			var body = document.getElementById('body');
+			body.style.height = body.offsetHeight;
+			var margin = body.offsetHeight - 240 - 216 - 40;
+			document.getElementById('form').style.marginBottom = (margin > 0 ? margin : 0) + 'px';
+
+			$.plusReady(function() {
+				var webview = plus.webview.currentWebview();
+				plus.screen.lockOrientation("portrait-primary");
+				app.bindQuit();
+				app.showWaiting(); 
+				var defaultSite = app.getDefaultSite();
+				if(utils.isEmpty(defaultSite)){
+					defaultSite = {};
+				}
+				//初始化各个按钮对象
+				var loginButton = doc.getElementById('login');
+				var accountBox = doc.getElementById('account');
+				var passwordBox = doc.getElementById('password');
+
+				// 显示查看密码 眼
+		        function showMuiIconEye() {
+		        	passwordBox.className = "mui-input mui-input-password";
+		        	doc.getElementById('spanEye').style.display = "block";
+		        }
+		        
+		        // 查看密码 眼 的事件
+		        doc.getElementById('spanEye').addEventListener('tap', function(){
+		        	if(this.classList.contains('mui-active')){
+		        		// 包含
+		        		this.classList.remove("mui-active");
+		        		passwordBox.type = "password";
+		        	}else {
+		        		this.classList.add("mui-active");
+		        		passwordBox.type = "text";
+		        	}
+		        });
+
+				// 获取并设置服务地址
+				function getServices(callback) {
+					app.closeWaiting();
+					app.showWaiting();
+					mui.ajax("http://jcyp.gongjiangyun.cn/api.php?s=/user/Services/getServices", {
+						data: {},
+						dataType: 'json',
+						async: true,
+						type: 'post',
+						timeout: 200,
+						success: function(list){	
+							if(callback){
+								callback(list);
+							}else{
+								app.closeWaiting();
+								plus.nativeUI.alert("获取服务站点失败，请检查网络设置后重试！");
+								return false;
+							}							   						   
+						}, error: function(xhr, type, errorThrown){
+							app.closeWaiting();
+							plus.nativeUI.alert("获取服务站点失败，请检查网络设置后重试！");
+							return false;
+						}, timeout: function() {
+							app.closeWaiting();
+							plus.nativeUI.alert("获取服务站点超时，请检查网络设置后重试！");
+							return false;
+						}
+					});
+				}
+
+				//关闭除了当前窗口以外的窗口
+				function closeButThis() {
+					//关闭其他界面，用于注销后重新进入登录页面
+					var allwebview = plus.webview.all();					
+					for(var i = 0; i < allwebview.length; i++) {
+						if(allwebview[i].id == webview.id) {
+							continue;
+						} else if(allwebview[i].id == 'home-me' || allwebview[i].id == 'index') {
+							//延时关闭这两个页面
+							setTimeout(function() {
+								plus.webview.getWebviewById("home-me") && plus.webview.getWebviewById("home-me").close();
+								plus.webview.getWebviewById("index") && plus.webview.getWebviewById("index").close();
+							}, 500);
+						} else {
+							allwebview[i].close();
+						}
+					}
+				}
+
+				//初始化登录界面
+				function toload(toshow = true, doLogin = true) {
+					app.closeWaiting();
+					//关闭除了login以外的界面
+					closeButThis();
+
+					//获取状态和设置
+					//var settings = app.getSettings();
+					var state = app.getState();
+					//判断跳转页面
+					function tomain() {
+						if(app.isEternet()) {
+							app.openWindow('index', 'index.html');
+						} else {
+							app.closeWaiting();
+							$.alert("请联网登录！");
+						}
+					}
+					
+					// 获取gps信息
+					function getGps(showWaiting, account, password, password1, agent, appVersion){
+						// 获取定位信息，登录获取一次，或许能改变后边的定位问题。
+						plus.geolocation.getCurrentPosition(function(position) {
+							var codns = position.coords;   // 获取地理坐标信息；
+							var r = /^(-)?\d+(\.\d+)?$/;
+							if((r.test(codns.longitude) && r.test(codns.latitude))){
+								longt = codns.longitude; // 获取到当前位置的经度；
+								lat = codns.latitude;    // 获取到当前位置的纬度；
+								code_type = position.coordsType;
+								accuracy = codns.accuracy;
+								loginAjax(showWaiting, account, password, password1, agent, appVersion, longt, lat, code_type, accuracy);
+							}else{
+								loginAjax(showWaiting, account, password, password1, agent, appVersion, '', '', 'location_err', '');
+							}
+						},function(){
+							app.closeWaiting();
+							//plus.nativeUI.alert('定位失败: ' + e.message);  // 去掉登录定位失败提示 edited by liuj 20180621
+							loginAjax(showWaiting, account, password, password1, agent, appVersion, '', '', 'location_err', '');
+							//plus.nativeUI.alert(app.GpsNotAllowed);
+						}, {provider:'baidu', geocode : false, enableHighAccuracy:true});
+					}
+					
+					// ajax 登录
+					function loginAjax(showWaiting, account, password, password1, agent, appVersion, longt, lat, code_type, accuracy){
+						var a = plus.runtime.arguments;
+						//console.log(JSON.stringify(plus.runtime.arguments));
+						if(utils.notEmpty(a)){
+							var json = JSON.parse(a);
+							for(var key in json)
+							{
+								console.log(key + ':' + json[key]);	
+						        if(key == "_VA_|_sender_" && mui.os.android){
+						        	app.closeWaiting();
+						        	plus.nativeUI.alert('请勿使用第三方软件登录！'); 
+						        	return;
+						        }
+						　   }
+						}
+                        var clientInfo = plus.push.getClientInfo();
+						var cid = clientInfo.clientid;
+						var push_token = clientInfo.token;
+						app.ajax('/user/LoginMobile/login1', {
+							'username': account,
+							'password': password1,
+							'cid': cid,
+							'push_token': push_token,
+							'agent': agent,
+							'uuid': plus.device.uuid,
+							'model': plus.device.model,
+							'vendor': plus.device.vendor,
+							'os_name': plus.os.name,
+							'os_version': plus.os.version,
+							'os_vendor': plus.os.vendor,
+							'app_version': appVersion,
+							'longt': longt,
+							'lat': lat,
+							'pcoords_type': code_type,
+							'accuracy': accuracy,
+							'plus_runtime': JSON.stringify(plus.runtime.arguments)
+						}, function(data) {
+							if(data.s == "ok") {
+								var stateOld = app.getState();
+								if(account != stateOld.username) {
+									app.clearState(['defaultSite']);
+								}
+								app.createState(data.uid, account, data.nickname, password, data.companyid, data.companyname, data.token, data.group, data.childmenu, data.prolist);
+								settings = app.getSettings();
+								settings.userinfo = data;
+								app.setSettings(settings);
+								localStorage.setItem('autologin', 'true');
+								if(utils.isEmpty(data.companyid)){
+									// 没有相关公司自然需要注册
+									app.openWindow('register_company0', 'register_company0.html',{"create_uid" : data.uid});
+								}else {
+									tomain();
+								}																		
+							} else {
+								if(data.s == '该用户无相关公司') {
+									app.openWindow('register_company', 'register_company.html',{"create_uid" : data.id});
+								}
+								else{
+									plus.nativeUI.toast(data.s);
+								}
+							}
+							showWaiting && plus.nativeUI.closeWaiting();
+						}, function(err) {
+							app.toast(err.Message);
+						});
+					}
+
+                    // 登录
+					function login(showWaiting, doLogin) {
+						if(doLogin == false) return;
+						var account = accountBox.value || '';
+						var password = passwordBox.value || '';
+						//有网络就进行在线登录
+						if(app.isEternet()) {
+							if(account.length < 3) {
+								plus.nativeUI.toast('账号最短为 3 个字符');
+								return;
+							}
+							if(password.length < 6) {
+								plus.nativeUI.toast('密码最短为 6 个字符');
+								return;
+							}
+							var password1 = SparkMD5.hash(password);
+							showWaiting && plus.nativeUI.showWaiting("登录中...");
+							var agent = mui.os.ios ? 'ios' : 'android';
+							// 先获取当前app版本
+							app.getAppVersion(function(appVersion){
+								getGps(showWaiting, account, password, password1, agent, appVersion);
+							});
+						} else {
+							$.alert("当前无网络，请联网重试！");
+						}
+					};
+
+					//登录按钮
+					loginButton.addEventListener('tap', function(event) {
+						login(true, true);
+					});
+
+					//退出后触发显示
+					webview.addEventListener('toshow', function() {
+						webview.show('none');
+						plus.webview.getWebviewById('index') && plus.webview.getWebviewById('index').close();
+					});
+					
+					//首次登录显示
+					toshow && webview.show('none');
+					toshow && plus.webview.getWebviewById('index') && plus.webview.getWebviewById('index').close();
+
+					//如果有网络，则更新，无网络，不能登录
+					if(app.isEternet()) {
+						settings = app.getSettings();
+						var userinfo = settings.userinfo;
+						if(userinfo) {
+							accountBox.value = state.username;
+							passwordBox.value = state.password;
+							toshow && (localStorage.getItem('autologin') == undefined || localStorage.getItem('autologin') == "true") && login(true, doLogin);
+						}else{
+							showMuiIconEye();
+						}
+					} else {
+						showMuiIconEye();
+						$.alert("当前无网络，请联网重试！");
+					}
+				}
+				
+				// password-keyup
+				doc.getElementById('password').addEventListener('keyup', function() {
+					if(this.value == ""){
+						showMuiIconEye();
+					}
+				})
+				
+				//注册账户
+				doc.getElementById('register').addEventListener('tap', function(event) {
+					app.openWindow('register', 'register.html');
+				}); 
+
+				//绑定忘记密码
+				doc.getElementById('forgetPass').addEventListener('tap', function() {
+					app.openWindow('forgetPass', 'forgetPass.html');
+				})
+
+				//关闭splash页面，初始化界面
+				plus.navigator.closeSplashscreen();
+				
+		        // 选择站点 - 二级联示例
+				var cityPicker = new $.PopPicker({
+					layer: 2
+				});
+                var cityList = null;
+                var cityHT = new HashTable();  // 站点服务存到hashTable中
+                
+                // 获取服务站点并绑定到站点选择按钮上                
+				getServices(function(list){	
+					cityList = list;
+					for(var i =0; i<list.length; i++){						
+						// 加载二级的
+						var subList = list[i].children;						
+						for(var s = 0; s<subList.length; s++){
+							cityHT.add(subList[s].text, subList[s].value);
+						} 						
+					}
+					// 二级联动控件试件
+					cityPicker.setData(cityList);
+					doc.getElementById('showCityPicker').addEventListener('tap', function(event) {
+						cityPicker.show(function(items) {
+							doc.getElementById('showCityPicker').innerHTML = items[1].text;
+							// 重新设置了站点
+							defaultSite.city = items[1].text;														    												    
+						    defaultSite.webSite = items[1].value;
+						    app.setDefaultSite(defaultSite);
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+					// 获取定位，判断定位的问题了		
+					app.closeWaiting();
+					app.showWaiting("获取站点...");
+					plus.geolocation.getCurrentPosition(function(position) {
+							// 回调函数
+							var r = /^(-)?\d+(\.\d+)?$/;							
+							if(r.test(position.coords.longitude) && r.test(position.coords.latitude)) {	
+								if(position.address && utils.notEmpty(position.address.city)) {									
+									if(utils.notEmpty(defaultSite.city)) {																		    
+										// 当前所在城市与历史所在城市不一致时 
+										if(defaultSite.city != position.address.city ) {
+											//alert('从上往下if1');
+											// 历史保存的城市跟当前城市不一致时提示
+											plus.nativeUI.confirm("您当前所在地区为‘"+ position.address.city +"’，是否为您切换到‘"+ position.address.city +"’", 
+											function(event) {
+													var tab_index = event.index;
+													switch(tab_index){ 
+														case 0:
+														    var strWebSite = cityHT.getValue(position.address.city);
+														    if(utils.isEmpty(strWebSite)) {
+														    	// 未找到相应站点，即所在地区未开通“检测唯一码”
+														    	mui.alert("您所在地区" + position.address.city + "未开通服务！");
+														    	// 开始登录了
+																toload(true, false); 
+														    }else {
+														    	// 缓存所选地址														    	
+															    doc.getElementById('showCityPicker').innerHTML = position.address.city;	
+															    // 重新设置了站点
+															    defaultSite.city = position.address.city;														    												    
+															    defaultSite.webSite = cityHT.getValue(position.address.city);
+															    app.setDefaultSite(defaultSite);
+																mui.alert('切换成功');
+																// 开始登录了
+																toload(true, false); 
+														    }														    
+														break;
+														case 1:
+															// 开始登录了
+															// 重新设置了站点
+										                    doc.getElementById('showCityPicker').innerHTML = defaultSite.city;	
+										                    defaultSite.webSite = cityHT.getValue(defaultSite.city);
+															app.setDefaultSite(defaultSite); // 重新缓存website
+															toload(true, false); 
+														break;											
+													}
+												}, '提示', ['切换', '不切换']
+											);
+										}else {
+											//alert('从上往下else1');
+											var strWebSite = cityHT.getValue(position.address.city);
+										    if(utils.isEmpty(strWebSite)) {
+										    	// 未找到相应站点，即所在地区未开通“检测唯一码”
+										    	mui.alert("您所在地区" + position.address.city + "未开通服务！");
+										    	// 开始登录了
+												toload(true, false); 
+										    }else {
+										    	doc.getElementById('showCityPicker').innerHTML = defaultSite.city;
+										    	defaultSite.webSite = cityHT.getValue(defaultSite.city);
+												app.setDefaultSite(defaultSite);
+												// 开始登录了
+												toload(true); 
+										    }
+										}
+										//alert('从上往下if2');
+									}else {
+										//alert('从上往下else2');
+										// 未曾选择过城市时选择所在城市，如果这个城市没有开通则需要自己选
+										var strWebSite = cityHT.getValue(position.address.city);
+									    if(utils.isEmpty(strWebSite)) {
+									    	// 未找到相应站点，即所在地区未开通“检测唯一码”
+									    	mui.alert("您所在地区" + position.address.city + "未开通服务！");
+									    	// 开始登录了
+											toload(true, false); 
+									    }else {
+									    	doc.getElementById('showCityPicker').innerHTML = position.address.city;	
+											// 重新设置了站点
+											defaultSite.city = position.address.city;									    												    
+										    defaultSite.webSite = cityHT.getValue(defaultSite.city);
+										    app.setDefaultSite(defaultSite);
+										    // 开始登录了
+											toload(true); 
+									    }										
+									}
+									//alert('从上往下if3');
+								}else {
+									//alert('从上往下else3');
+									//alert(JSON.stringify(position.address));
+									// address||address.city 为空的时候不代表定位错误，而是由于其他原因而没获取到city
+									// 所以这时候就不要提示定位错误了
+									// 改为可以选择站点登录
+									// 开始登录了
+									app.closeWaiting();	
+									plus.nativeUI.alert("请选择相应站点登录！");
+									toload(true, false); 
+									// 定位错误3
+									//plus.nativeUI.alert(app.GpsNotAllowed);
+									//return;
+								}
+								//alert('从上往下if1');
+							}else {
+								//alert('从上往下else4');
+								// 定位错误2
+								// 此时（获取站点位置时）定位错误也没关系，比如实验室的没有要一定记录其位置信息，故此时也可以直接选择站点登录
+								app.closeWaiting();	
+								plus.nativeUI.alert("请选择相应站点登录！");
+								toload(true, false); 
+								//plus.nativeUI.alert(app.GpsNotAllowed);
+								//return;
+							}
+							app.closeWaiting();							
+						}, function(){
+							// 定位错误1
+							// 同定位错误2
+							// 此时（获取站点位置时）定位错误也没关系，比如实验室的没有要一定记录其位置信息，故此时也可以直接选择站点登录
+							app.closeWaiting();	
+							plus.nativeUI.alert("请选择相应站点登录！");
+							toload(true, false);
+							//plus.nativeUI.alert(app.GpsNotAllowed);
+							//return;
+						}, {'provider':'baidu', 'geocode':true, 'enableHighAccuracy':true}					
+					);
+					// end 定位判断代码结束
+					
+				});
+
+			});
+		}(mui, document));
+	</script>
+
+</html>

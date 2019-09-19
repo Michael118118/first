@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html class="ui-page-login" style="width:100%;height:100%;">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录</title>
+		<link href="css/mui/mui.min.css" rel="stylesheet" />
+		<link href="css/common/iconfont.css" rel="stylesheet" />
+		<link href="css/mui/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/mui/mui.poppicker.css" rel="stylesheet" />
+		<style type="text/css">
+			.line {
+				position: relative;
+				height: 50px;
+				line-height: 50px;
+				border-bottom: solid 1px #0287E4;
+				padding-left: 60px;
+			}
+			
+			.line label {
+				width: 60px;
+				height: 49px;
+				line-height: 55px;
+				display: block;
+				text-align: center;
+				vertical-align: middle;
+				position: absolute;
+				left: 0;
+			}
+			
+			.line input {
+				border: 0 !important;
+				margin: 0 !important;
+				padding: 0 !important;
+				width: 100%;
+				display: block !important;
+				height: 49px;
+				line-height: 49px !important;
+			}
+			
+			#divVerify {
+				min-width: 90vw;
+				height: 300px;
+				top: 50% !important;
+				margin-top: -150px;
+				left: 50% !important;
+				margin-left: -45vw;
+				opacity: 1;
+			}
+			
+			.mui-btn-red {
+				width: 90vw;
+			}
+			
+			#btnGetVerify:hover {
+				background-color: #f1f1f1 !important;
+				color: #000000 !important;
+			}
+			.line .mui-icon-eye{
+				margin-top:5px; 
+			}
+			
+			.mui-input-row label{
+				padding:0px;
+			}
+			
+			.mui-icon-eye{
+				font-size: 20px;
+			    position: absolute;
+			    z-index: 1;
+			    top: 10px;
+			    right: 0;
+			    width: 38px;
+			    height: 38px;
+			    text-align: center;
+			    color: #999;
+			}
+			
+			.mui-btn {
+			    font-size: 16px;
+			    padding: 8px;
+			    padding-top: 8px;
+			    padding-right: 8px;
+			    padding-bottom: 8px;
+			    padding-left: 8px;
+			    margin: 3px;
+			}
+		</style>
+	</head>
+
+	<body id="body" style="width:100%;height:100%;min-height:500px;background-color:#fff;text-align: center;">
+		<div style="position:relative;width:100%;height:200px;padding-top:50px;background-color:#0287E4;">
+			<div>
+				<!--display:inline-block;-->
+				<!--<img style="position:relative;width:160px;" src="images/logo.png" />-->
+			    <h2 style="position:relative;color:#ffffff;margin-top:15px;font-family:serif;">民情直通车</h2>
+			</div>			
+		</div>
+		<div id="form" style="position: relative;width:auto;padding:18px 10px;">
+			<div class="mui-content-padded">
+				<button id="showProjectPicker" class="mui-btn mui-btn-block" type="button">选择小区 ...</button>
+				<div id='projectResult' class="ui-alert"></div>
+				<input type="hidden" id="community" name="community" />
+				<input type="hidden" id="project" name="project" />
+			</div>
+			<div class="mui-content-padded">
+				<button id="showRoomPicker" class="mui-btn mui-btn-block" type="button">选择房号 ...</button>
+				<div id='roomResult' class="ui-alert"></div>
+				<input type="hidden" id="building" name="building" />
+				<input type="hidden" id="unit" name="unit" />
+				<input type="hidden" id="door" name="door" />
+			</div>
+			<div class="mui-content-padded">				
+				<input id='password' type="password" class="mui-input" style="float:left;" value="" placeholder="请输入密码">
+	            <span class="mui-icon mui-icon-eye" id="spanEye" style="display:none;"></span> 
+			</div> 
+			<div class="mui-content-padded">
+				<button id='login' class="mui-btn mui-btn-block mui-btn-outlined mui-btn-primary" style="width:100%;margin-top:30px;border:solid 1px #0287E4;padding:8px;font-size:20px;border-radius:0;color:#0287E4;">登录</button>
+			</div>
+		</div>
+		<div style="position:relative;width:100%;height:40px;line-height:40px;color:#f1f1f1;background-color:#0287E4;font-size:14px;">
+			© 2019 山东联房信息技术有限公司
+		</div>		
+	</body>
+	<script src="js/mui/mui.min.js"></script>
+	<script src="js/common/utils.js"></script>
+	<script src="js/common/app.js"></script>
+	<script src="js/common/md5.min.js"></script>
+	<script src="js/mui/mui.picker.min.js"></script>
+	<script src="js/mui/mui.poppicker.js"></script>
+	<script src="js/common/project.data.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/common/room.data.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		(function($, doc) {
+			$.init();
+			//计算页面高度，设置底部条的位置
+			var body = document.getElementById('body');
+			body.style.height = body.offsetHeight;
+			var margin = body.offsetHeight - 240 - 216 - 40;
+			document.getElementById('form').style.marginBottom = (margin > 0 ? margin : 0) + 'px';
+
+			$.plusReady(function() {
+				var webview = plus.webview.currentWebview();
+				plus.screen.lockOrientation("portrait-primary");
+				app.bindQuit();
+				app.showWaiting(); 
+				var defaultSite = app.getDefaultSite();
+				if(utils.isEmpty(defaultSite)){
+					defaultSite = {};
+				}
+				//初始化各个按钮对象
+				var loginButton = doc.getElementById('login');
+				var passwordBox = doc.getElementById('password');
+
+				// 显示查看密码 眼
+		        function showMuiIconEye() {
+		        	passwordBox.className = "mui-input mui-input-password";
+		        	doc.getElementById('spanEye').style.display = "block";
+		        }
+		        
+		        // 查看密码 眼 的事件
+		        doc.getElementById('spanEye').addEventListener('tap', function(){
+		        	if(this.classList.contains('mui-active')){
+		        		// 包含
+		        		this.classList.remove("mui-active");
+		        		passwordBox.type = "password";
+		        	}else {
+		        		this.classList.add("mui-active");
+		        		passwordBox.type = "text";
+		        	}
+		        });
+		        
+		        function initData(){
+		        	var projectPicker = new $.PopPicker({
+						layer: 2
+					});
+
+		        	app.ajax('/fang/services/getProjects', {}, 
+		        		function(data){
+		        		    if(data.s == "ok"){
+		        		    	//小区选择器	
+								projectPicker.setData(data.data);
+								var showProjectPickerButton = doc.getElementById('showProjectPicker');
+								var projectResult = doc.getElementById('projectResult');
+								showProjectPickerButton.addEventListener('tap', function(event) {
+									projectPicker.show(function(items) {
+										doc.getElementById("community").value = items[0].value;
+										doc.getElementById("project").value = items[1].value;
+										doc.getElementById("building").value = "";
+										doc.getElementById("unit").value = "";
+										doc.getElementById("door").value = "";
+										projectResult.innerText = "你选择的小区是:" + items[0].text + " " + items[1].text;
+										roomResult.innerText = "";
+										initFang(items[1].value);
+										//返回 false 可以阻止选择框的关闭
+										//return false;
+									});
+								}, false);
+		        		    }else{
+		        		    	alert(data.s);
+		        		    	app.closeWaiting();
+		        		    }
+			        	},function(err){
+			        		alert(err);
+		        		    app.closeWaiting();
+			        	}		        	
+		        	);
+		        }
+		        
+		        // 获取房号
+		        var roomPicker = new $.PopPicker({
+					layer: 3
+				});
+				var showRoomPickerButton = doc.getElementById('showRoomPicker');
+				var roomResult = doc.getElementById('roomResult');
+		        function initFang(projectid){
+		        	roomPicker.setData([]);
+		        	// 房间选择器	
+		        	var param = {};
+		        	param.projectid = projectid;
+		        	app.ajax('/fang/services/getProjectFangs', param, 
+		        		function(data){
+		        		    if(data.s == "ok"){
+		        		    	if(data.data.length == 0){
+		        		    		alert("未设置房户");
+		        		    		app.closeWaiting();
+		        		    	}else{
+		        		    		//小区选择器	
+									roomPicker.setData(data.data);								
+									showRoomPickerButton.addEventListener('tap', function(event) {
+										roomPicker.show(function(items) {
+											doc.getElementById("building").value = items[0].value;
+											doc.getElementById("unit").value = items[1].value;
+											doc.getElementById("door").value = items[2].value;
+											roomResult.innerText = "你选择的房间是:" + _getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text');
+											//返回 false 可以阻止选择框的关闭
+											//return false;
+										});
+									}, false);
+		        		        }		        		    	
+		        		    }else{
+		        		    	alert(data.s);
+		        		    	app.closeWaiting();
+		        		    }
+			        	},function(err){
+			        		alert(err);
+		        		    app.closeWaiting();
+			        	}		        	
+		            );					
+		        }
+		        
+		        showRoomPickerButton.addEventListener("tap", function(){
+		        	if(doc.getElementById("project").value == ""){
+		        		alert("请先选择小区！");
+		        		return false;
+		        	}
+		        });
+
+				/**
+				 * 获取对象属性的值
+				 * 主要用于过滤三级联动中，可能出现的最低级的数据不存在的情况，实际开发中需要注意这一点；
+				 * @param {Object} obj 对象
+				 * @param {String} param 属性名
+				 */
+				var _getParam = function(obj, param) {
+					return obj[param] || '';
+				}; 
+
+				//关闭除了当前窗口以外的窗口
+				function closeButThis() {
+					//关闭其他界面，用于注销后重新进入登录页面
+					var allwebview = plus.webview.all();					
+					for(var i = 0; i < allwebview.length; i++) {
+						if(allwebview[i].id == webview.id) {
+							continue;
+						} else if(allwebview[i].id == 'home-me' || allwebview[i].id == 'index') {
+							//延时关闭这两个页面
+							setTimeout(function() {
+								plus.webview.getWebviewById("home-me") && plus.webview.getWebviewById("home-me").close();
+								plus.webview.getWebviewById("index") && plus.webview.getWebviewById("index").close();
+							}, 500);
+						} else {
+							allwebview[i].close();
+						}
+					}
+				}
+
+				//初始化登录界面
+				function toload(toshow = true, doLogin = true) {
+					app.closeWaiting();
+					//关闭除了login以外的界面
+					closeButThis();
+
+					//获取状态和设置
+					//var settings = app.getSettings();
+					var state = app.getState();
+					//判断跳转页面
+					function tomain() {
+						if(app.isEternet()) {
+							app.openWindow('me_feedback', 'page/me/feedback.html'); 
+						} else {
+							app.closeWaiting();
+							$.alert("请联网登录！");
+						}
+					}
+					
+					
+					// ajax 登录
+					function loginAjax(showWaiting, account, password, password1, agent, appVersion, longt, lat, code_type, accuracy){
+						var a = plus.runtime.arguments;						
+						if(utils.notEmpty(a)){
+							var json = JSON.parse(a);
+							for(var key in json)
+							{
+						        if(key == "_VA_|_sender_" && mui.os.android){
+						        	app.closeWaiting();
+						        	plus.nativeUI.alert('请勿使用第三方软件登录！'); 
+						        	return;
+						        }
+						　   }
+						}
+                        var clientInfo = plus.push.getClientInfo();
+						var cid = clientInfo.clientid;
+						var push_token = clientInfo.token;
+						var communityValue = doc.getElementById("community").value;
+						var projectValue = doc.getElementById("project").value;
+						var buildingValue = doc.getElementById("building").value;
+						var unitValue = doc.getElementById("unit").value;
+						var doorValue = doc.getElementById("door").value;
+						app.ajax('/user/LoginMobile/login1', {
+							'community': communityValue,
+							'project': projectValue,
+							'building': buildingValue,
+							'unit': unitValue,
+							'door': doorValue,
+							'password': password1,
+							'cid': cid,
+							'push_token': push_token,
+							'agent': agent,
+							'uuid': plus.device.uuid,
+							'model': plus.device.model,
+							'vendor': plus.device.vendor,
+							'os_name': plus.os.name,
+							'os_version': plus.os.version,
+							'os_vendor': plus.os.vendor,
+							'app_version': appVersion,
+							'longt': longt,
+							'lat': lat,
+							'pcoords_type': code_type,
+							'accuracy': accuracy,
+							'plus_runtime': JSON.stringify(plus.runtime.arguments)
+						}, function(data) {
+							if(data.s == "ok") {
+								app.createState(data.uid, communityValue, projectValue, buildingValue, unitValue, doorValue, data.nickname, password, null, null, data.token, null, null, null);
+								settings = app.getSettings();
+								settings.userinfo = data;
+								app.setSettings(settings);
+								localStorage.setItem('autologin', 'true');
+								tomain();
+							} else {
+								plus.nativeUI.toast(data.s);
+							}
+							showWaiting && plus.nativeUI.closeWaiting();
+						}, function(err) {
+							app.toast(err.Message);
+						});
+					}
+
+                    // 登录
+					function login(showWaiting, doLogin) {
+						if(doLogin == false) return;
+						var account = 1;
+						var password = passwordBox.value || '';
+						//有网络就进行在线登录
+						if(app.isEternet()) {
+							if(utils.isEmpty(doc.getElementById("door").value)){
+								plus.nativeUI.alert('请选择房号！');
+								return;
+							}
+							if(password.length < 6) {
+								plus.nativeUI.alert('密码最短为 6 个字符');
+								return; 
+							}
+							var password1 = SparkMD5.hash(password);
+							showWaiting && plus.nativeUI.showWaiting("登录中...");
+							var agent = mui.os.ios ? 'ios' : 'android';
+							// 先获取当前app版本
+							app.getAppVersion(function(appVersion){
+								loginAjax(showWaiting, account, password, password1, agent, appVersion, '', '', '', '');
+							});
+						} else {
+							$.alert("当前无网络，请联网重试！");
+						}
+					};
+
+					//登录按钮
+					loginButton.addEventListener('tap', function(event) {
+						login(true, true);
+					});
+
+					//退出后触发显示
+					webview.addEventListener('toshow', function() {
+						webview.show('none');
+						plus.webview.getWebviewById('index') && plus.webview.getWebviewById('index').close();
+					});
+					
+					//首次登录显示
+					toshow && webview.show('none');
+					toshow && plus.webview.getWebviewById('index') && plus.webview.getWebviewById('index').close();
+
+					//如果有网络，则更新，无网络，不能登录
+					if(app.isEternet()) {
+						settings = app.getSettings();
+						var userinfo = settings.userinfo;
+						if(userinfo) {
+							passwordBox.value = state.password;
+							toshow && (localStorage.getItem('autologin') == undefined || localStorage.getItem('autologin') == "true") && login(true, doLogin);
+						}else{
+							//showMuiIconEye();
+						}
+					} else {
+						//showMuiIconEye();
+						$.alert("当前无网络，请联网重试！");
+					}
+				}
+				
+				// password-keyup
+				doc.getElementById('password').addEventListener('keyup', function() {
+					if(this.value == ""){
+						showMuiIconEye();
+					}
+				})
+
+				//关闭splash页面，初始化界面
+				plus.navigator.closeSplashscreen();
+				
+				initData();
+				
+				toload();
+
+			});
+		}(mui, document));
+	</script>
+
+</html>

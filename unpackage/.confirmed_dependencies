@@ -1,0 +1,1311 @@
+{
+  "login.html": {
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/offline.js",
+      "images/logo.png",
+      "js/common/app.js",
+      "fonts/iconfont.ttf",
+      "js/common/md5.min.js",
+      "js/common/utils.js",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "fonts/mui.ttf"
+    ],
+    "refer": [
+      "index.html",
+      "register.html",
+      "register_company.html",
+      "page/common/position.html",
+      "page/common/project.html",
+      "forgetPass.html",
+      "page/me/feedback.html"
+    ]
+  },
+  "index.html": {
+    "resources": [
+      "js/common/common.js",
+      "css/common/common.css",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "page/home/index.html",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/iconfont.ttf",
+      "page/home/message.html",
+      "js/common/file.js",
+      "page/home/work.html",
+      "fonts/mui.ttf",
+      "page/me/feedback.html"
+    ],
+    "refer": [
+      "page/home/index.html",
+      "page/home/me.html",
+      "page/home/work.html",
+      "page/home/message.html",
+      "page/more/index.html",
+      "page/cms/index.html"
+    ]
+  },
+  "page/home/index.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "css/common/iconfont.css",
+      "images/head.jpg"
+    ],
+    "refer": []
+  },
+  "page/home/me.html": {
+    "resources": [
+      "js/common/file.js",
+      "images/ios_app.png",
+      "css/page/home/me.css",
+      "js/common/NjsPhoneApi.js",
+      "images/android_app.png",
+      "images/weixin.jpg",
+      "js/mui/mui.view.js",
+      "css/common/feedback.css",
+      "images/head.jpg",
+      "css/mui/mui.min.css",
+      "fonts/mui.ttf",
+      "js/common/offline.js",
+      "js/common/utils.js",
+      "css/common/common.css",
+      "fonts/iconfont.ttf",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "css/common/iconfont.css",
+      "css/common/pictures.css"
+    ],
+    "refer": [
+      "page/me/projects.html",
+      "page/me/offSubmit.html",
+      "page/user/user_common.html",
+      "page/user/password.html",
+      "page/me/staff.html",
+      "page/me/contact.html",
+      "page/me/company_user.html",
+      "page/me/help.html",
+      "page/me/feedback.html",
+      "page/me/company.html",
+      "page/me/company_show.html",
+      "page/me/user_auth.html"
+    ]
+  },
+  "page/home/work.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "fonts/iconfont.ttf",
+      "js/common/utils.js",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "js/common/offline.js",
+      "js/common/menu.js"
+    ],
+    "refer": [
+      "page/common/barcode_scan.html",
+      "page/more/work/addSend4Test.html",
+      "page/more/work/addReport.html",
+      "page/more/work/addReportList.html",
+      "page/more/work/list.html",
+      "page/report/query/main.html",
+      "page/more/work/record.html",
+      "page/more/work/sftList.html",
+      "page/more/work/infoDetail.html",
+      "page/more/work/sftHistoryList.html",
+      "page/more/project/index.html",
+      "page/more/project/list.html",
+      "page/more/work/infoList.html",
+      "page/more/company/qyxxsh.html",
+      "page/more/work/sftHistoryList1.html",
+      "page/more/work/addSFT1.html",
+      "page/more/Bill/addBill.html"
+    ]
+  },
+  "page/home/message.html": {
+    "resources": [
+      "css/common/common.css",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/offline.js",
+      "js/common/app.js",
+      "js/common/utils.js",
+      "fonts/iconfont.ttf",
+      "fonts/mui.ttf",
+      "images/wuliu.png",
+      "images/completed.png",
+      "images/1234.png",
+      "images/system.png",
+      "images/association.png",
+      "images/system1.png"
+    ],
+    "refer": [
+      "page/message/index.html"
+    ]
+  },
+  "page/common/barcode_scan.html": {
+    "resources": [
+      "css/mui/mui.min.css",
+      "fonts/mui.ttf",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "css/common/common.css"
+    ],
+    "refer": [
+      "page/common/showStr.html",
+      "page/more/index.html",
+      "page/more/work/addCC.html",
+      "page/more/work/addOSS.html",
+      "page/more/work/addCuring.html",
+      "page/more/work/addCAR.html",
+      "page/more/work/addSend4Test.html",
+      "page/more/work/addCCReport.html",
+      "page/more/work/infoDetail.html",
+      "page/more/work/addCAR1.html",
+      "page/more/work/list.html",
+      "page/more/work/oss_list.html",
+      "page/more/work/addCC2.html",
+      "page/more/work/addCC1.html",
+      "page/more/work/addOSS1.html"
+    ]
+  },
+  "page/common/showStr.html": {
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "css/mui/mui.min.css"
+    ],
+    "refer": []
+  },
+  "page/more/work/addCC.html": {
+    "resources": [
+      "js/common/utils.js",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "css/mui/mui.min.css",
+      "css/common/userlist.css",
+      "css/common/pictures.css",
+      "css/mui/mui.imageviewer.css",
+      "css/common/img-thumb.css",
+      "css/common/more_check.css",
+      "fonts/iconfont.ttf",
+      "js/common/file.js",
+      "js/mui/mui.zoom.js",
+      "js/common/watermark.min.js",
+      "images/jiahao.png",
+      "js/common/userlist.js",
+      "css/common/feedback.css",
+      "js/mui/mui.imageViewer.js",
+      "js/core/DMobileFrame_DownLoadUtil.js",
+      "js/libs/zepto.min.js",
+      "js/common/offline.js",
+      "css/common/work.css",
+      "js/common/pictures.js",
+      "images/photo.png"
+    ],
+    "refer": [
+      "page/more/check/project.html",
+      "page/common/project.html",
+      "page/common/position.html",
+      "page/common/dicselect.html",
+      "page/common/select_list.html",
+      "page/common/steelBarModel.html",
+      "page/common/barcode_scan.html",
+      "page/more/work/checkAddress.html",
+      "page/more/work/infoDetail.html"
+    ]
+  },
+  "page/more/check/project.html": {
+    "resources": [
+      "js/common/offline.js",
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/common/iconfont.css"
+    ],
+    "refer": [
+      "page/common/select_list.html"
+    ]
+  },
+  "page/common/select_list.html": {
+    "resources": [
+      "css/mui/mui.indexedlist.css",
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "js/common/utils.js"
+    ],
+    "refer": []
+  },
+  "page/common/project.html": {
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css"
+    ],
+    "refer": [
+      "page/common/select_list.html"
+    ]
+  },
+  "page/common/position.html": {
+    "resources": [
+      "js/common/offline.js",
+      "css/common/common.css",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "js/common/utils.js"
+    ],
+    "refer": []
+  },
+  "page/common/dicselect.html": {
+    "resources": [
+      "css/mui/mui.indexedlist.css"
+    ],
+    "refer": []
+  },
+  "page/more/work/addOSS.html": {
+    "resources": [
+      "css/common/userlist.css",
+      "css/common/pictures.css",
+      "js/common/pictures.js",
+      "css/common/work.css",
+      "css/mui/mui.imageviewer.css",
+      "images/photo.png",
+      "css/common/img-thumb.css",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/iconfont.ttf",
+      "css/mui/mui.min.css"
+    ],
+    "refer": [
+      "page/common/barcode_scan.html",
+      "page/more/work/infoDetail.html"
+    ]
+  },
+  "page/me/projects.html": {
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css"
+    ],
+    "refer": []
+  },
+  "page/me/offSubmit.html": {
+    "resources": [
+      "js/common/file.js",
+      "css/common/userlist.css",
+      "fonts/mui.ttf",
+      "css/mui/mui.imageviewer.css",
+      "css/common/common.css",
+      "css/common/icons-extra.css",
+      "js/common/utils.js",
+      "css/common/iconfont.css",
+      "js/mui/mui.imageViewer.js",
+      "js/core/DMobileFrame_DownLoadUtil.js",
+      "js/mui/mui.min.js",
+      "js/libs/zepto.min.js",
+      "js/common/offline.js",
+      "js/common/app.js",
+      "css/common/img-thumb.css",
+      "css/mui/mui.min.css"
+    ],
+    "refer": []
+  },
+  "page/user/user_common.html": {
+    "resources": [
+      "css/common/common.css",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "js/common/utils.js"
+    ],
+    "refer": []
+  },
+  "page/user/password.html": {
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/md5.min.js",
+      "js/common/utils.js",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css"
+    ],
+    "refer": []
+  },
+  "page/me/staff.html": {
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css"
+    ],
+    "refer": []
+  },
+  "page/more/work/addCuring.html": {
+    "resources": [
+      "css/common/pictures.css",
+      "js/common/pictures.js",
+      "css/common/work.css",
+      "images/photo.png",
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "fonts/iconfont.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/common/iconfont.css"
+    ],
+    "refer": []
+  },
+  "page/more/work/addSend4Test.html": {
+    "resources": [
+      "css/common/userlist.css",
+      "css/common/pictures.css",
+      "fonts/mui.ttf",
+      "css/mui/mui.imageviewer.css",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "css/common/work.css",
+      "fonts/iconfont.ttf",
+      "css/common/img-thumb.css",
+      "css/mui/mui.min.css"
+    ],
+    "refer": [
+      "page/common/select_list.html",
+      "page/common/project.html",
+      "page/more/work/addSFTItem.html",
+      "page/common/checkItem.html"
+    ]
+  },
+  "page/more/work/addSFTItem.html": {
+    "resources": [
+      "css/common/userlist.css",
+      "css/common/pictures.css",
+      "css/common/work.css",
+      "css/mui/mui.imageviewer.css",
+      "css/common/img-thumb.css",
+      "css/mui/mui.min.css",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/iconfont.ttf"
+    ],
+    "refer": [
+      "page/common/barcode_scan.html"
+    ]
+  },
+  "page/more/work/addCAR.html": {
+    "resources": [
+      "css/common/pictures.css",
+      "js/common/pictures.js",
+      "css/common/work.css",
+      "images/photo.png",
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "fonts/iconfont.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/common/iconfont.css"
+    ],
+    "refer": [
+      "page/more/work/checkAddress.html"
+    ]
+  },
+  "page/more/work/checkAddress.html": {
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "css/common/pictures.css",
+      "fonts/mui.ttf",
+      "css/common/work.css",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "images/blue_flag1.png",
+      "images/red.png",
+      "images/blue_flag.png",
+      "images/redios.png"
+    ],
+    "refer": []
+  },
+  "page/more/work/addReport.html": {
+    "resources": [
+      "css/common/userlist.css",
+      "css/common/pictures.css",
+      "css/common/work.css",
+      "css/mui/mui.imageviewer.css",
+      "css/common/img-thumb.css",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "fonts/iconfont.ttf",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "js/common/pictures.js",
+      "images/photo.png"
+    ],
+    "refer": [
+      "page/common/select_list.html",
+      "page/common/project.html",
+      "page/more/work/reportItem.html",
+      "page/common/barcode_scan.html"
+    ]
+  },
+  "page/more/work/addReportList.html": {
+    "resources": [
+      "css/common/work.css",
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "fonts/iconfont.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/common/iconfont.css",
+      "css/common/pictures.css"
+    ],
+    "refer": [
+      "page/common/select_list.html",
+      "page/more/work/addReport.html",
+      "page/more/work/addCR.html"
+    ]
+  },
+  "page/more/work/list.html": {
+    "resources": [
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js"
+    ],
+    "refer": [
+      "page/more/work/infoDetail.html"
+    ]
+  },
+  "page/report/query/workinfo.html": {
+    "resources": [
+      "js/core/DMobileFrame_DownLoadUtil.js",
+      "js/libs/zepto.min.js",
+      "css/mui/mui.imageviewer.css",
+      "css/common/img-thumb.css",
+      "js/mui/mui.imageViewer.js",
+      "css/common/iconfont.css"
+    ],
+    "refer": []
+  },
+  "page/report/query/main.html": {
+    "resources": [
+      "page/report/query/workinfo.html",
+      "fonts/mui.ttf",
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "css/common/common.css",
+      "js/common/utils.js"
+    ],
+    "refer": [
+      "page/report/query/workinfo.html",
+      "page/report/query/menu.html"
+    ]
+  },
+  "page/report/query/menu.html": {
+    "resources": [
+      "css/mui/mui.min.css"
+    ],
+    "refer": []
+  },
+  "page/more/work/record.html": {
+    "resources": [
+      "js/core/DMobileFrame_DownLoadUtil.js",
+      "js/libs/zepto.min.js",
+      "css/common/userlist.css",
+      "js/common/watermark.min.js",
+      "js/mui/mui.zoom.js",
+      "css/mui/mui.imageviewer.css",
+      "images/jiahao.png",
+      "css/common/img-thumb.css",
+      "js/common/userlist.js",
+      "css/mui/mui.min.css",
+      "css/common/feedback.css",
+      "js/mui/mui.imageViewer.js",
+      "css/common/pictures.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js"
+    ],
+    "refer": [
+      "page/more/work/addReport.html"
+    ]
+  },
+  "page/more/work/addCR.html": {
+    "resources": [
+      "css/common/userlist.css",
+      "css/common/pictures.css",
+      "css/common/work.css",
+      "css/mui/mui.imageviewer.css",
+      "fonts/iconfont.ttf",
+      "css/common/img-thumb.css",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "css/common/common.css",
+      "fonts/mui.ttf",
+      "js/common/utils.js",
+      "js/mui/mui.min.js",
+      "js/common/app.js"
+    ],
+    "refer": [
+      "page/more/work/crItem.html",
+      "page/common/barcode_scan.html",
+      "page/more/work/addReport.html"
+    ]
+  },
+  "page/more/work/crItem.html": {
+    "resources": [
+      "css/common/img-thumb.css",
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "css/common/userlist.css",
+      "js/common/app.js",
+      "css/common/pictures.css",
+      "fonts/mui.ttf",
+      "css/common/work.css",
+      "css/mui/mui.imageviewer.css",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/common/iconfont.css",
+      "fonts/iconfont.ttf",
+      "images/completed.png",
+      "images/qualified.png",
+      "images/\b\u003c1.png",
+      "images/\r\b\u003c1.png",
+      "images/unqualified.png",
+      "images/unrecivecheck.png"
+    ],
+    "refer": [
+      "page/common/barcode_scan.html"
+    ]
+  },
+  "page/more/work/reportItem.html": {
+    "resources": [
+      "css/common/userlist.css",
+      "css/mui/mui.imageviewer.css",
+      "css/common/img-thumb.css",
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "css/common/pictures.css",
+      "fonts/mui.ttf",
+      "css/common/work.css",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/common/iconfont.css",
+      "images/qualified.png",
+      "fonts/iconfont.ttf",
+      "images/unrecivecheck.png",
+      "images/unreport.png",
+      "images/unqualified.png"
+    ],
+    "refer": [
+      "page/common/barcode_scan.html",
+      "page/more/work/addCCReport.html"
+    ]
+  },
+  "page/more/work/addCCReport.html": {
+    "resources": [
+      "css/common/pictures.css",
+      "css/common/work.css",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "js/common/utils.js",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css"
+    ],
+    "refer": []
+  },
+  "page/common/checkItem.html": {
+    "resources": [
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/common/iconfont.css"
+    ],
+    "refer": []
+  },
+  "page/more/work/sftList.html": {
+    "resources": [
+      "css/mui/mui.min.css",
+      "css/common/menuinpage.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js"
+    ],
+    "refer": [
+      "page/common/select_list.html",
+      "page/more/work/addReport.html",
+      "page/more/work/addCR.html",
+      "page/more/work/sftListDetail.html"
+    ]
+  },
+  "page/more/work/sftListDetail.html": {
+    "resources": [
+      "css/common/userlist.css",
+      "css/common/pictures.css",
+      "css/common/work.css",
+      "css/mui/mui.imageviewer.css",
+      "css/common/common.css",
+      "css/common/img-thumb.css",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "fonts/mui.ttf",
+      "js/common/utils.js",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/iconfont.ttf"
+    ],
+    "refer": [
+      "page/more/work/crItem.html",
+      "page/more/work/sftListItemDetail.html",
+      "page/common/barcode_scan.html"
+    ]
+  },
+  "page/more/work/sftListItemDetail.html": {
+    "resources": [
+      "images/qualified.png",
+      "css/common/img-thumb.css",
+      "css/mui/mui.min.css",
+      "images/report_qualified.png",
+      "images/reaceive_qualified.png",
+      "css/common/userlist.css",
+      "css/common/pictures.css",
+      "css/common/work.css",
+      "css/mui/mui.imageviewer.css",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js"
+    ],
+    "refer": []
+  },
+  "page/more/work/infoDetail.html": {
+    "resources": [
+      "css/common/userlist.css",
+      "css/common/pictures.css",
+      "css/common/work.css",
+      "css/mui/mui.imageviewer.css",
+      "css/common/img-thumb.css",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "js/common/pictures.js",
+      "images/photo.png",
+      "images/default_img.png",
+      "images/head.jpg",
+      "js/libs/DMobileFrame_DownLoadUtil.js",
+      "js/libs/zepto.min.js",
+      "js/mui/mui.imageViewer.js",
+      "images/img_error.jpg",
+      "images/default_img1.png"
+    ],
+    "refer": [
+      "page/more/work/editDetail.html",
+      "page/more/work/editOSS.html",
+      "page/more/work/checkAddress.html"
+    ]
+  },
+  "page/more/work/sftHistoryList.html": {
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/menuinpage.css",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "css/mui/mui.min.css"
+    ],
+    "refer": [
+      "page/common/select_list.html",
+      "page/more/work/sftListDetail.html"
+    ]
+  },
+  "page/more/project/index.html": {
+    "resources": [
+      "css/common/pictures.css",
+      "js/common/pictures.js",
+      "css/common/work.css",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js"
+    ],
+    "refer": [
+      "page/common/select_list.html",
+      "page/common/localAddress.html"
+    ]
+  },
+  "page/common/localAddress.html": {
+    "resources": [
+      "css/mui/mui.indexedlist.css",
+      "css/mui/mui.min.css",
+      "page/common/anchor.html",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js"
+    ],
+    "refer": [
+      "page/common/anchor.html"
+    ]
+  },
+  "page/common/anchor.html": {
+    "resources": [
+      "images/pink.png"
+    ],
+    "refer": []
+  },
+  "page/more/project/list.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/common/menuinpage.css",
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "css/common/common.css",
+      "js/common/utils.js"
+    ],
+    "refer": [
+      "page/more/project/index.html",
+      "page/more/project/edit.html",
+      "page/more/project/add.html"
+    ]
+  },
+  "page/more/project/edit.html": {
+    "resources": [
+      "css/common/work.css",
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/utils.js"
+    ],
+    "refer": [
+      "page/common/localAddress.html",
+      "page/more/project/relation_company_list.html",
+      "page/more/project/building_list.html"
+    ]
+  },
+  "page/message/index.html": {
+    "resources": [
+      "css/mui/mui.min.css",
+      "js/plugin/arttmpl.js",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "js/common/utils.js",
+      "js/common/menu.js"
+    ],
+    "refer": []
+  },
+  "register.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "js/common/md5.min.js",
+      "js/common/utils.js",
+      "css/common/iconfont.css"
+    ],
+    "refer": [
+      "register_company.html"
+    ]
+  },
+  "register_company.html": {
+    "resources": [
+      "css/mui/mui.picker.min.css",
+      "css/mui/mui.poppicker.css",
+      "js/mui/mui.picker.min.js",
+      "css/mui/mui.min.css",
+      "js/mui/mui.poppicker.js",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "css/common/common.css",
+      "js/common/md5.min.js",
+      "js/common/utils.js",
+      "css/common/iconfont.css",
+      "fonts/iconfont.ttf"
+    ],
+    "refer": [
+      "register_project.html",
+      "index.html"
+    ]
+  },
+  "register_project.html": {
+    "resources": [
+      "css/mui/mui.picker.min.css",
+      "js/mui/mui.min.js",
+      "css/mui/mui.poppicker.css",
+      "js/common/app.js",
+      "fonts/mui.ttf",
+      "js/mui/mui.picker.min.js",
+      "css/common/common.css",
+      "js/common/md5.min.js",
+      "js/common/utils.js",
+      "css/mui/mui.min.css",
+      "js/mui/mui.poppicker.js",
+      "css/common/iconfont.css"
+    ],
+    "refer": [
+      "page/common/localAddress.html"
+    ]
+  },
+  "page/more/project/add.html": {
+    "resources": [
+      "css/common/work.css",
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "js/common/utils.js",
+      "js/common/app.js",
+      "css/common/common.css"
+    ],
+    "refer": [
+      "page/common/localAddress.html"
+    ]
+  },
+  "page/me/contact.html": {
+    "resources": [
+      "css/mui/mui.indexedlist.css",
+      "css/common/iconfont.css",
+      "css/mui/mui.min.css"
+    ],
+    "refer": []
+  },
+  "page/me/company_user.html": {
+    "resources": [
+      "fonts/mui.ttf",
+      "css/mui/mui.indexedlist.css",
+      "css/mui/mui.min.css",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/offline.js",
+      "js/common/app.js",
+      "fonts/iconfont.ttf",
+      "css/common/common.css",
+      "js/common/utils.js",
+      "images/head.jpg"
+    ],
+    "refer": [
+      "page/company_user/add_user.html",
+      "page/company_user/user_detail.html",
+      "page/common/contact_scan.html"
+    ]
+  },
+  "page/company_user/add_user.html": {
+    "resources": [
+      "css/mui/mui.min.css",
+      "js/mui/mui.min.js",
+      "js/common/utils.js",
+      "js/common/app.js",
+      "css/common/common.css",
+      "css/common/iconfont.css"
+    ],
+    "refer": [
+      "page/common/select_list.html",
+      "page/common/contact_scan.html"
+    ]
+  },
+  "page/company_user/user_detail.html": {
+    "refer": [
+      "page/company_user/edit_user.html"
+    ],
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/utils.js",
+      "js/common/app.js",
+      "js/common/offline.js",
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "css/common/iconfont.css",
+      "images/head.jpg"
+    ]
+  },
+  "page/company_user/edit_user.html": {
+    "refer": [
+      "page/common/select_list.html"
+    ],
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/utils.js",
+      "js/common/app.js",
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "css/common/iconfont.css"
+    ]
+  },
+  "page/more/project/relation_company_list.html": {
+    "refer": [
+      "page/more/project/add.html",
+      "page/more/project/add_relation_company.html",
+      "page/more/project/edit_relation_company.html"
+    ],
+    "resources": [
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "js/common/utils.js"
+    ]
+  },
+  "page/more/project/add_relation_company.html": {
+    "refer": [
+      "page/common/select_list.html"
+    ],
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/utils.js",
+      "js/common/app.js",
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "css/common/work.css"
+    ]
+  },
+  "page/more/project/edit_relation_company.html": {
+    "refer": [
+      "page/common/select_list.html"
+    ],
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/utils.js",
+      "js/common/app.js",
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "css/common/work.css"
+    ]
+  },
+  "page/more/work/infoList.html": {
+    "refer": [
+      "page/common/select_list.html"
+    ],
+    "resources": []
+  },
+  "page/more/project/batch_add_building.html": {
+    "refer": [
+      "page/common/select_list.html",
+      "page/common/localAddress.html"
+    ],
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/utils.js",
+      "js/common/app.js",
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "css/common/work.css"
+    ]
+  },
+  "page/more/project/building_list.html": {
+    "refer": [
+      "page/more/project/batch_add_building.html",
+      "page/more/project/add_building.html",
+      "page/more/project/edit_relation_company.html",
+      "page/more/project/edit_building.html"
+    ],
+    "resources": [
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "js/common/utils.js"
+    ]
+  },
+  "page/more/project/add_building.html": {
+    "refer": [
+      "page/common/select_list.html",
+      "page/common/localAddress.html"
+    ],
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/utils.js",
+      "js/common/app.js",
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "css/common/work.css"
+    ]
+  },
+  "page/more/project/edit_building.html": {
+    "refer": [
+      "page/common/select_list.html",
+      "page/common/localAddress.html"
+    ],
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/utils.js",
+      "js/common/app.js",
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "css/common/work.css"
+    ]
+  },
+  "page/more/company/qyxxsh.html": {
+    "href": "page/more/company/qyxxsh.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "page/common/contact_scan.html": {
+    "href": "page/common/contact_scan.html",
+    "resources": [
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "css/mui/mui.indexedlist.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "js/common/utils.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "page/me/feedback.html": {
+    "href": "page/me/feedback.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "js/common/utils.js",
+      "js/common/pictures.js",
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "css/common/pictures.css",
+      "css/common/iconfont.css",
+      "css/mui/mui.imageviewer.css"
+    ],
+    "refer": [
+      "login.html"
+    ],
+    "priority": 0
+  },
+  "page/me/help.html": {
+    "href": "page/me/help.html",
+    "resources": [
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "css/mui/mui.min.css",
+      "css/common/common.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "setPass.html": {
+    "href": "setPass.html",
+    "resources": [
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "js/common/utils.js",
+      "js/common/md5.min.js"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "forgetPass.html": {
+    "href": "forgetPass.html",
+    "resources": [
+      "css/mui/mui.min.css",
+      "css/common/common.css",
+      "css/common/iconfont.css",
+      "js/mui/mui.min.js",
+      "js/common/app.js",
+      "js/common/utils.js",
+      "js/common/md5.min.js"
+    ],
+    "refer": [
+      "setPass.html"
+    ],
+    "priority": 0
+  },
+  "page/me/company_show.html": {
+    "refer": [
+      "page/me/company.html"
+    ],
+    "resources": []
+  },
+  "page/me/user_auth.html": {
+    "refer": [
+      "page/common/select_list.html"
+    ],
+    "resources": []
+  },
+  "page/more/work/addCAR1.html": {
+    "refer": [
+      "page/more/work/checkAddress.html",
+      "page/more/work/addCR.html"
+    ],
+    "resources": []
+  },
+  "page/more/work/editDetail.html": {
+    "refer": [
+      "page/common/select_list.html",
+      "page/more/work/infoDetail.html",
+      "page/common/project.html"
+    ],
+    "resources": []
+  },
+  "page/more/work/oss_list.html": {
+    "refer": [
+      "page/more/work/infoDetail.html"
+    ],
+    "resources": []
+  },
+  "page/more/work/editOSS.html": {
+    "refer": [
+      "page/more/work/infoDetail.html"
+    ],
+    "resources": []
+  },
+  "page/more/work/addCC2.html": {
+    "refer": [
+      "page/common/select_list.html",
+      "page/more/work/checkAddress1.html",
+      "page/common/project.html",
+      "page/more/work/infoDetail.html",
+      "page/common/barcode_scan.html"
+    ],
+    "resources": []
+  },
+  "page/more/work/sftHistoryList1.html": {
+    "refer": [
+      "page/more/work/sftListDetail1.html",
+      "page/common/select_list.html"
+    ],
+    "resources": []
+  },
+  "page/more/work/sftListDetail1.html": {
+    "refer": [
+      "page/more/work/sftListItemDetail.html",
+      "page/more/work/editSFT1.html"
+    ],
+    "resources": []
+  },
+  "page/more/work/editSFT1.html": {
+    "refer": [
+      "page/common/select_list.html",
+      "page/common/checkItem.html",
+      "page/more/work/editSFTItem.html",
+      "page/common/project.html"
+    ],
+    "resources": []
+  },
+  "page/more/work/editSFTItem.html": {
+    "refer": [
+      "page/common/select_list.html",
+      "page/more/work/editSFTItemCC.html",
+      "page/common/steelBarModel.html"
+    ],
+    "resources": []
+  },
+  "page/more/work/editSFTItemCC.html": {
+    "refer": [
+      "page/common/barcode_scan.html"
+    ],
+    "resources": []
+  },
+  "page/more/work/addSFT1.html": {
+    "refer": [
+      "page/common/select_list.html",
+      "page/common/project.html",
+      "page/more/work/editSFTItem.html",
+      "page/common/checkItem.html"
+    ],
+    "resources": []
+  },
+  "page/more/work/addOSS1.html": {
+    "refer": [
+      "page/more/work/infoDetail.html",
+      "page/common/barcode_scan.html"
+    ],
+    "resources": []
+  },
+  "page/more/Bill/addBill.html": {
+    "refer": [
+      "page/common/select_list.html",
+      "page/more/Bill/billList.html"
+    ],
+    "resources": []
+  },
+  "page/more/Bill/billList.html": {
+    "refer": [
+      "page/common/select_list.html",
+      "page/more/Bill/billDetail.html"
+    ],
+    "resources": []
+  }
+}

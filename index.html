@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>检测样品监管系统</title>
+		<link href="css/mui/mui.min.css" rel="stylesheet" />
+		<link href="css/common/iconfont.css" rel="stylesheet" />
+		<link href="css/common/common.css" rel="stylesheet" /> 
+		<style type="text/css">
+			nav .mui-active {
+				color: #38adff !important;
+			}
+
+			.mui-icon .mui-badge {
+				margin-left: -14vw;
+			}
+			
+			.unread {
+				border-radius: 3px 0 0 3px;
+				padding: 2px 2px 2px 3px;
+				background-color: #F0AD4E;
+				margin: 0;
+				display: inline-block;
+			}
+			
+			.undeal {
+				border-radius: 0 3px 3px 0;
+				padding: 2px 3px 2px 2px;
+				background-color: red;
+				margin: 0;
+				display: inline-block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<nav class="mui-bar mui-bar-tab ">
+			<a id="home-feedback" class="mui-tab-item mui-active" href="###">
+				<span class="mui-icon iconfont icon-xiaoxi" style="width:100%;top:6px;"></span>
+				<span class="mui-tab-label" style="font-size:10px;">民情直通车</span> 
+			</a>
+			<a id="home-cms" class="mui-tab-item" href="###">
+				<span class="mui-icon iconfont icon-yingyong" style="width:100%;top:6px;"></span>
+				<span class="mui-tab-label" style="font-size:10px;">政策法规</span>
+			</a>			
+		</nav>
+		<script src="js/mui/mui.min.js"></script>
+		<script src="js/common/app.js"></script>
+		<script type="text/javascript">
+			(function($, doc) {
+				$.init();
+				$.plusReady(function() { 
+					var webview = plus.webview.currentWebview();
+					plus.screen.lockOrientation("portrait-primary");
+					app.bindQuit();
+					app.showWaiting("请稍等...");
+					var self = app.curentWindow();
+					var subpage_style = {
+						top: '44px',
+						bottom: '51px'
+					};
+					var outpage_style = {
+						top: '0px',
+						bottom: '51px'
+					};
+					var pageList = [
+						"home-feedback", "home-cms"
+					];
+					var pageHash = {
+						"home-feedback":"page/me/feedback.html",
+						"home-cms": "page/cms/index.html"
+					};
+					var activeTab = null;
+					var tabHash = {};
+					//创建tab
+					function createTab(tabid) {
+						if(tabHash[tabid] == undefined) {
+							var view = null;							
+							view = app.preloadWindow(tabid, pageHash[tabid], null, outpage_style, "none");
+							view.hide("none");
+							self.append(view);
+							tabHash[tabid] = view;
+						}
+					}
+                    
+                    // 菜单切换
+					function tabClick(id) {
+						if(activeTab == id)
+							return true;
+						else {
+							var pre = tabHash[activeTab];
+							var next = tabHash[id];
+							if(next == undefined) {
+								next = createTab(id);
+							}
+							//隐藏
+							activeTab = id;
+							if(pre) {
+								pre.hide("none");
+							}
+							//显示
+							if(mui.os.ios) {
+								next && next.show("none");
+							} else {
+								next && next.show("fade-in", 300);
+							}
+						}
+					};
+					
+					//初始化页面
+					for(var i = 0; i < pageList.length; i++) {
+						createTab(pageList[i]);
+						//绑定事件
+						document.getElementById(pageList[i]).addEventListener('tap', function() {
+							tabClick(this.id);
+						});
+					}
+					tabClick(pageList[0]);
+
+					//首页预加载完成事件
+					app.closeWaiting();
+					webview.show('fade-in');
+					webview.opener() && webview.opener().close('none');// 这里一般指的是login
+					
+					// app 有新版本在“我”右侧提示
+					window.hasNewVersion = function(){
+						// 下标提示
+						//document.getElementById('me_show').style.display = 'block';
+					};
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

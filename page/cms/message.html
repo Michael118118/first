@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>消息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../../css/mui/mui.min.css" rel="stylesheet" />
+		<link href="../../css/common/common.css" rel="stylesheet" />
+		<style type="text/css">a
+			.mui-ellipsis{
+				white-space: normal;
+			}
+			#pSystemTime,#pAssociationTime,#pWorkTime{
+				margin-right:10px;
+			}
+			.user-logo{
+				background-color: red;
+			    width: 42px;
+			    text-align: center;
+			    border-radius: 50%;
+			    color: #fff;
+			    font-size: 16px;
+			    font-weight: bolder;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav main-page">
+			<h1 class="mui-center mui-title">消息</h1>
+			<h6 class="mui-center mui-title-sub" id="subTitle"></h6>
+		</header>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div style="margin-top:45px">
+					<ul class="mui-table-view" id="con">
+						<li class="mui-table-view-cell mui-media" id="liSystemMsg" style="display:;">
+							<a href="javascript:;" id="system" onclick="toDetail('system')">
+								<span class="mui-media-object mui-pull-left user-logo" style="background-color:#20c3ff;">
+									<!--<img class="mui-media-object mui-pull-left" src="../../images/system1.png">-->
+									系统
+								</span>
+								<div class="mui-media-body">
+									系统消息
+									<!--<p id="pSystemTitle" class="mui-ellipsis" style="line-height:2.5;">欢迎使用检测样品管理系统</p>-->
+									<p id="pSystemMsg" class="mui-ellipsis" style="line-height:2;">欢迎使用检测样品管理系统。</p>
+									<p id="pSystemTime" class="mui-ellipsis mui-pull-right" style="line-height:5;">2018-11-30 11:11:11</p>
+								</div>
+							</a>
+						</li>
+						<!--<li class="mui-table-view-cell mui-media" id="liAssociationMsg" style="display:none;">
+							<a href="javascript:;" id="association" onclick="toDetail('association')">
+								<img class="mui-media-object mui-pull-left" src="../../images/association.png">
+								<div class="mui-media-body">
+									协会消息
+									<p id="pAssociationTitle" class="mui-ellipsis" style="line-height:2.5;">暂无消息</p>
+									<p id="pAssociationMsg" class="mui-ellipsis" style="line-height:2;">暂无消息</p>
+									<p id="pAssociationTime" class="mui-ellipsis mui-pull-right" style="line-height:5;">暂无消息</p>
+								</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media" id="liWorkMsg" style="display:none;">							
+							<img class="mui-media-object mui-pull-left" src="../../images/wuliu.png">
+							<div class="mui-media-body">
+								工作消息
+								<p id="pWorkTitle" class="mui-ellipsis" style="line-height:2.5;">暂无消息</p>
+								<p id="pWorkMsg" class="mui-ellipsis" style="line-height:2;">暂无消息</p>
+								<p id="pWorkTime" class="mui-ellipsis mui-pull-right" style="line-height:5;">暂无消息</p>
+							</div>
+						</li>-->
+						<!--<li class="mui-table-view-cell mui-media" id="liWorkMsg" style="display:block;">							
+							<span class="mui-media-object mui-pull-left user-logo" style="">站</span>
+							<div class="mui-media-body">
+								工作消息
+								<p id="pWorkTitle" class="mui-ellipsis" style="line-height:2.5;">暂无消息</p>
+								<p id="pWorkMsg" class="mui-ellipsis" style="line-height:2;">暂无消息</p>
+								<p id="pWorkTime" class="mui-ellipsis mui-pull-right" style="line-height:5;">暂无消息</p>
+							</div>
+						</li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="topPopover" class="mui-popover">
+			<div class="mui-popover-arrow"></div>
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view" id="prolist">
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="../../js/mui/mui.min.js"></script>
+		<script src="../../js/common/app.js"></script>
+		<script src="../../js/common/utils.js"></script>
+		<script>
+			(function($, doc) {
+				$.init();
+				mui('.mui-scroll-wrapper').scroll();
+				$.plusReady(function() {
+					plus.screen.lockOrientation("portrait-primary");
+					app.bindQuit();
+					var webview = app.curentWindow();
+					var state = app.getState();
+					var settings = app.getSettings();
+					var defaultSite = app.getDefaultSite();
+					doc.getElementById('subTitle').innerHTML = defaultSite.city;
+					
+//					document.getElementById('pSystemTime').innerHTML = document.getElementById('pAssociationTime').innerHTML = document.getElementById('pWorkTime').innerHTML = new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' 
+//					+ new Date().getDate() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+					
+					var liSystemMsg = document.getElementById('liSystemMsg');
+					var pSystemMsg = document.getElementById('pSystemMsg');
+					//var pSystemTitle = document.getElementById('pSystemTitle');
+					var pSystemTime = document.getElementById('pSystemTime');
+					var liAssociationMsg = document.getElementById('liAssociationMsg');
+					var pAssociationMsg = document.getElementById('pAssociationMsg');
+					var pAssociationTime = document.getElementById('pAssociationTime');
+					var liWorkMsg = document.getElementById('liWorkMsg');
+					var pWorkMsg = document.getElementById('pWorkMsg');
+					var pWorkTime = document.getElementById('pWorkTime');
+
+					window.toDetail = function (type, name){
+						//var name = '消息';
+						switch (type){
+							case 'system':
+							    name = '系统消息';
+							    break;
+							case 'association': 
+							    name = '协会消息';
+							    break;
+							default:   
+							    
+							    break;							    
+						}
+					    app.openWindow('message_index' , '../message/index.html', {'type' : type, 'name' : name});
+					}
+					
+					var arrColor = ['#20c3ff', '#0cc67f', '#ff9f0f', '#bea1e4', '#ef6362', "#26bbff", "#00d486", "#f6aa23", "#c49ae2", "#f05950", "#2bbdf9", "#03e593"];
+					var colorIndex = 0;
+					// 获取并展示消息
+					function getMessage(){
+						param = {};
+						param.userid = state.userid;
+						param.companyid = state.companyid;
+						param.sessionid = state.sessionid;
+						app.ajax('/message/index/getRecentMessage', param, function(data){
+							if(data.s == 'ok') {
+								var oldMsgDomList = doc.getElementsByClassName('other-msg');
+								for(var i = oldMsgDomList.length-1; i >= 0; i--){
+									oldMsgDomList[i].remove();
+								}								
+								var list = data.list;
+								for(var i=0;i<list.length;i++) {
+									// 系统消息
+									if(list[i].cate == '8'){
+										//pSystemTitle.innerHTML = list[i].title;
+										pSystemMsg.innerHTML = list[i].content;
+										pSystemTime.innerHTML = list[i].date;
+									}else {
+										//  
+										var newLi = doc.createElement('li');
+										newLi.className = "mui-table-view-cell mui-media other-msg";										 
+										var shtml = '<a href="javascript:;" id="association" onclick="toDetail(\'' + list[i].companyid + '\', \'' + list[i].publisher + '\')">' + 
+											'<span class="mui-media-object mui-pull-left user-logo" style="background-color:'+ arrColor[colorIndex] +';">'+ list[i].publisher_short +'</span>' +
+												'<div class="mui-media-body">' +
+												list[i].title +  
+												//'	<p id="pWorkTitle" class="mui-ellipsis" style="line-height:2.5;">' + list[i].title + '</p>' +
+												'	<p id="pWorkMsg" class="mui-ellipsis" style="line-height:2;">' + list[i].content + '</p>' +
+												'	<p id="pWorkTime" class="mui-ellipsis mui-pull-right" style="line-height:5;">' + list[i].date + '</p>' +
+												'</div>' + 
+											'</a>';
+										colorIndex++;
+							            if(colorIndex >= 12) colorIndex = 0;
+										newLi.innerHTML = shtml;
+                                        doc.getElementById('con').appendChild(newLi);
+									}
+//									// 协会消息
+//									if(list[i].cate == '6'){
+//										liAssociationMsg.style.display = '';
+//										pAssociationTitle.innerHTML = list[i].title;
+//										pAssociationMsg.innerHTML = list[i].content;
+//										pAssociationTime.innerHTML = list[i].date;
+//									}
+//									// 工作消息
+//									if(list[i].cate == '7'){
+//										liWorkMsg.style.display = '';
+//										pWorkTitle.innerHTML = list[i].title;
+//										pWorkMsg.innerHTML = list[i].cotent;
+//										pWorkTime.innerHTML = list[i].date;
+//									}
+								}
+							}
+						})
+					}
+					getMessage();
+
+					/*
+					 * 刷新页面
+					 * back 从其他页面返回-默认为true
+					 * contactUid ?定向更新数据
+					 */
+					window.torefresh = function() {
+                        getMessage();
+					};
+
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

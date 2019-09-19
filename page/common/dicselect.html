@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui/mui.min.css" rel="stylesheet" />
+		<link href="../../css/common/common.css" rel="stylesheet" />
+		<link href="../../css/mui/mui.indexedlist.css" rel="stylesheet" />
+		<style>
+			.mui-pager-info{
+				display: inline-block !important;
+				padding-top: 7px;
+			}
+			.mui-content{
+				bottom:54px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title"><input id="search" type="search" style="width:90%;background-color: white;color:#333333" placeholder="搜索名称"></h1>
+			<button id='searchButton' class="mui-pull-right mui-btn-link">搜索</button>
+		</header>
+		<div class="mui-content" >
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul id="alllist" class="mui-table-view">
+					</ul>
+				</div>
+			</div>
+		</div>
+		<footer class="dicSelPager">
+			<ul class="mui-pager">
+				<li id="mui-previous" class="mui-previous">
+					<a href="#">
+						上一页
+					</a>
+				</li>
+				<li id="pager-info" class="mui-pager-info">
+					1/1页
+				</li>
+				<li id="mui-next" class="mui-next">
+					<a href="#">
+						下一页
+					</a>
+				</li>
+			</ul>
+		</footer>
+		<script src="../../js/mui/mui.min.js"></script>
+		<script src="../../js/common/app.js"></script>
+		<script src="../../js/common/utils.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			(function($, doc) {
+				mui.init();
+				var scroller = mui('.mui-scroll-wrapper').scroll();
+				mui.plusReady(function() {
+					var header = document.querySelector('header.mui-bar');
+					var list = document.getElementById('list');
+					var titleEle = document.getElementById("title");
+					var searchEle = document.getElementById("search");
+					var pageinfoEle = document.getElementById("pager-info");
+					//获取数据
+					var pageno = 1;
+					var pagenum = 1;
+					var rownum = 0;
+					var type = "";
+					var filter = {};
+					var values = null;
+					var title = "";
+					var idfield = "";
+					var objId = "";
+
+					function getDicPage(type, filter) {
+						if (values != undefined && values != null) {
+							plus.nativeUI.showWaiting("请等待...");
+							var res = values;
+							pagenum = 1;
+							rownum = res.length;
+							pageinfoEle.innerHTML = pageno + "/" + pagenum + "页 共" + rownum + "条";
+							if (res != null) {
+								var allHtml = "";
+								allHtml += '<li data-id="" class="mui-table-view-cell" style="color:red;">清空选择</li>';
+								for (var i = 0; i < res.length; i++) {
+									if (res[i].Name != "") {
+										var lindexname = res[i].Name;
+										var indexid = idfield == "" ? res[i].ID : res[i][idfield];
+										allHtml += '<li data-id="' + indexid + '" class="mui-table-view-cell">' + lindexname + '</li>';
+									}
+								}
+								document.getElementById("alllist").innerHTML = allHtml;
+								var lis = document.getElementsByClassName("mui-table-view-cell");
+								for (var i = 0; i < lis.length; i++) {
+									lis[i].addEventListener("tap", function(e) {
+										var attid = this.getAttribute("data-id");
+										var attname = attid==""?"":this.innerText;
+										var parentPage = plus.webview.currentWebview().opener();
+										mui.fire(parentPage, 'dicSelected', {
+											"objId": objId,
+											"type": type,
+											"id": attid,
+											"name": attname
+										});
+										var ws = plus.webview.currentWebview();
+										ws.hide('auto');
+									});
+								}
+								var ws = plus.webview.currentWebview();
+								scroller.scrollTo(0, 0, 200);
+								ws.show();
+							} else {
+								document.getElementById("alllist").innerHTML;
+								plus.nativeUI.toast("无相关数据");
+							}
+							plus.nativeUI.closeWaiting();
+						} else {
+							if(type == undefined || type== null || type =='null' || type ==''){
+								plus.nativeUI.toast("无相关数据");
+								return;
+							}
+							filter.pageno = pageno;
+							plus.nativeUI.showWaiting("请等待...");
+							app.getSysDic(type, function(data) {
+								if (data.s == "ok") {
+									var res = data.data;
+									pagenum = data.pagenum;
+									rownum = data.rownum;
+									pageinfoEle.innerHTML = pageno + "/" + pagenum + "页 共" + rownum + "条";
+									if (res != null) {
+										var allHtml = "";
+										allHtml += '<li data-id="" class="mui-table-view-cell" style="color:red;">清空选择</li>';
+										for (var i = 0; i < res.length; i++) {
+											if (res[i].Name != "") {
+												var lindexname = res[i].Name;
+												var indexid = idfield == "" ? res[i].ID : res[i][idfield];
+												allHtml += '<li data-id="' + indexid + '" class="mui-table-view-cell">' + lindexname + '</li>';
+											}
+										}
+										document.getElementById("alllist").innerHTML = allHtml;
+										var lis = document.getElementsByClassName("mui-table-view-cell");
+										for (var i = 0; i < lis.length; i++) {
+											lis[i].addEventListener("tap", function(e) {
+												var attid = this.getAttribute("data-id");
+												var attname = attid==""?"":this.innerText;
+												var parentPage = plus.webview.currentWebview().opener();
+												mui.fire(parentPage, 'dicSelected', {
+													"objId": objId,
+													"type": type,
+													"id": attid,
+													"name": attname
+												});
+												var ws = plus.webview.currentWebview();
+												ws.hide('auto');
+											});
+										}
+										var ws = plus.webview.currentWebview();
+										scroller.scrollTo(0, 0, 200);
+										ws.show();
+									} else {
+										document.getElementById("alllist").innerHTML;
+										plus.nativeUI.toast("无相关数据");
+									}
+								}
+								plus.nativeUI.closeWaiting();
+							}, filter);
+						}
+					}
+					window.addEventListener("fresh", function(e) {
+						pageno = 1;
+						type = e.detail.type;
+						filter = e.detail.filter;
+						values = e.detail.values;
+						title = e.detail.title;						
+						idfield = e.detail.idfield;
+						objId = e.detail.objId;
+						//titleEle.innerHTML = title;
+						searchEle.value = "";
+						getDicPage(type, filter);
+					});
+					document.getElementById("mui-previous").addEventListener("tap", function() {
+						if (pageno == 1) return;
+						pageno = pageno - 1;
+						getDicPage(type, filter);
+					});
+					document.getElementById("mui-next").addEventListener("tap", function() {
+						if (pageno == pagenum) return;
+						pageno = pageno + 1;
+						getDicPage(type, filter);
+					});
+					var searchButton = doc.getElementById('searchButton');					
+					searchButton.addEventListener('tap', function(event) {
+						filter.name = searchEle.value;
+						pageno = 1;
+						getDicPage(type, filter);
+					});
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

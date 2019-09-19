@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui/mui.min.css" rel="stylesheet" />
+		<link href="css/common/common.css" rel="stylesheet" />
+		<link href="css/common/iconfont.css" rel="stylesheet" />
+		<style>
+			.mui-content{
+				font-size:14px;		
+			}
+			.mui-input-clear{
+				font-size:14px;				
+			}
+			.mui-input-row label {
+			    width: 70px;
+			    padding:0px 10px;
+			    line-height:40px;
+			}
+			.mui-input-row label~input, .mui-input-row label~select, .mui-input-row label~textarea {
+			    float: left;
+			    width: 65%;
+			}
+			.mui-input-row label~input, .mui-input-row label~select, .mui-input-row label~textarea {
+			    float: left;
+			    width: 65%;
+			}
+			#verifyBox{
+				width:120px;
+			}			
+			#btnGetVerify {
+			    width: 100px;
+			    height: 30px;
+			    margin-top: 5px;
+			    padding: 0px;
+			    border: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">找回密码</h1>
+		</header>
+		<div class="mui-content" style="width:100%;margin-top: 44px;">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<div class="mui-content-padded">
+						<div id="mainForm" class="mui-input-group">
+							<div class="mui-input-row">
+								<input id="mobileBox" type="text" class="mui-input-clear" placeholder="输入手机号码" />
+							</div>
+							<div id="divContent" class="mui-input-row">
+								<div id="divVerifyBox" style="float:left;width:60%;position:relative;">
+									<input id="verifyBox" type="password" class="mui-input-clear" placeholder="输入验证码" />
+								</div>
+								<div style="float:right;width:110px;">
+								    <button type="button" class="mui-btn " id="btnGetVerify">获取验证码</button>							
+								</div>
+							</div>
+						</div>
+						<div style="margin-top:10px;">
+							<button id='btnNext' class="mui-btn mui-btn-block mui-btn-primary" style="padding:10px 0;font-size:14px;">下一步</button>
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+		<script src="js/mui/mui.min.js"></script>
+		<script src="js/common/app.js"></script>
+		<script src="js/common/utils.js"></script> 
+		<script src="js/common/md5.min.js"></script>
+		<script>
+			(function($, doc) {
+				// 重置宽度
+				var divPassBoxWidth = doc.getElementById('divContent').clientWidth - 110;
+				doc.getElementById('divVerifyBox').style.width = divPassBoxWidth + 'px';
+				$.init({
+					swipeBack: true
+				});
+				mui('.mui-scroll-wrapper').scroll();
+				$.plusReady(function() {					
+					var webview = plus.webview.currentWebview();
+					var state = app.getState();
+					
+					var mobileBox = doc.getElementById('mobileBox');
+					var verifyBox = doc.getElementById('verifyBox');
+					// ajax 获取验证码
+					document.getElementById('btnGetVerify').addEventListener('tap', function() {
+						if(verify1() == false) return;
+						btnGetVerify.setAttribute('disabled', 'disabled'); // 点击一次在倒数结束完前不能再次点击；
+						var param = {};
+						param.mobile = mobileBox.value;
+						param.verify_type = 'forget_pass';
+						app.ajax('/user/common/sendMobileVerify', param, function(data) {
+							if(data.s == 'ok') {
+								var num = 60;
+								//开始倒计时
+								verify_time = window.setInterval(function() {
+									btnGetVerify.innerHTML = num + '秒后重新获取';
+									if(num == 1) {
+										btnGetVerify.innerHTML = '获取验证码';
+										btnGetVerify.removeAttribute("disabled");
+										window.clearInterval(verify_time);
+										return;
+									}
+									num--;
+								}, 1000);
+								plus.nativeUI.toast(data.msg);//'验证码发送成功'
+							} else {
+								btnGetVerify.removeAttribute("disabled");
+								plus.nativeUI.toast(data.msg);
+							}
+						})
+					})
+					
+					// 验证手机号码是否输入
+					function verify1() {
+						if(mobileBox.value == '') {
+							plus.nativeUI.toast('请输入手机号码');
+							return false;
+						}
+						if(!(/^1[3|4|5|7|8]\d{9}$/.test(mobileBox.value))) {
+							plus.nativeUI.toast("手机号码错误");
+							return false;
+						}
+					}
+	                // 验证短信验证码是否输入
+					function verify2() {
+						if(verifyBox.value == '') {
+							plus.nativeUI.toast('请输入短信验证码');
+							return false;
+						}
+					}
+
+					document.getElementById('btnNext').addEventListener("tap", function() {
+						param = {};
+						if(verify1() == false) return;
+						if(verify2() == false) return;
+						
+						// 验证验证码是否通过
+						var state = app.getState();
+						param.userid = state.userid;
+						param.sessionid = state.sessionid;
+						param.companyid = state.companyid;
+						param.mobile = mobileBox.value;
+						param.system = app.root;
+						param.verify_type = 'forget_pass';
+						param.verify_code = verifyBox.value;
+						param.no_checkremove = 1;
+						plus.nativeUI.showWaiting("请等待...");
+				
+						app.ajax('/user/common/checkMobileVerify', param, function(data) {
+							plus.nativeUI.closeWaiting();
+							if (data.s == "ok") {
+								//plus.webview.currentWebview().close();								
+								plus.nativeUI.toast("验证成功！");
+								app.openWindow('setPass', 'setPass.html', {"mobile" : mobileBox.value, 'verify_code': verifyBox.value});
+							} else {
+								plus.nativeUI.toast("验证失败," + data.s + "！");
+							}
+						});
+					});
+					webview.show('slide-in-right');
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

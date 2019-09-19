@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" class="feedback">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>意见反馈</title>
+		<link rel="stylesheet" type="text/css" href="../../css/mui/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/pictures.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css" />
+		<link rel="stylesheet" href="../../css/mui/mui.imageviewer.css"/>
+		<style>
+			.mui-input-group {
+				margin: 5px 0
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+			<h1 class="mui-title">民情直通车</h1>
+			<a id="aLogin" class="mui-icon mui-pull-right" style="font-size:14px;top:6px;display:none;">登录</a>
+			<a id="aHistory" class="mui-icon mui-pull-right" style="font-size:14px;top:6px;display:none;">反馈历史</a>
+		</header>
+		<div class="mui-content" style="top:45px;background-color: #efeff4;">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<form id="mainForm" class="mui-input-group" style="background-color: #efeff4;">						
+						<div class="mui-input-group">
+							<div class="row mui-input-row" style="height:100%;">
+								<textarea id='question' rows="8" style="overflow:auto;height:100%;" class="mui-input-clear question" placeholder="请详细描述您要表达的问题，以帮助我们尽快解决" maxlength="500"></textarea>
+							</div>
+						</div>
+						<div class="mui-input-group">
+							<label style="display:inline-block;padding:8px">图片(选填,提供问题截图,总大小10M以下)</label>
+							<div id='image-list' class="row image-list"></div>
+						</div>
+						<div class="mui-input-group">
+							<div class="mui-input-row">
+								<input id='contact' type="text" style="width:100% !important" placeholder="(请填写您的姓名、手机号码或固话号码或电子邮箱，方便我们联系您)" />								
+							</div>
+						</div>
+						<div class="mui-input-group">
+							<div class="mui-input-row mui-checkbox">
+								<label>匿名提交</label>
+								<input name="anonymous" value="1" type="checkbox" checked="">
+							</div>
+						</div>
+						
+						<div class="mui-input-group">
+							<button type="button" id="btnSubmit" class="mui-btn mui-btn-primary mui-btn-block">提交</button>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/mui/mui.min.js"></script>
+	<script src="../../js/common/app.js"></script>
+	<script src='../../js/common/utils.js'></script>
+	<script src="../../js/common/pictures.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    	(function($, doc) {
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll();
+			$.plusReady(function() {
+				app.closeWaiting();
+				var webview = plus.webview.currentWebview();
+				
+				var settings = app.getSettings();
+				mui.back = function() {
+					webview.close();
+				}	
+				
+				var state = app.getState();
+				
+				console.log(JSON.stringify(state));
+				
+				if(utils.notNull(state) && utils.notEmpty(state.userid)){
+					//doc.getElementById("aLogin").style.display = "none";
+					//doc.getElementById("aHistory").style.display = "block";
+				}else{
+					//doc.getElementById("aLogin").style.display = "block";
+					//doc.getElementById("aHistory").style.display = "none";
+				}
+				
+				doc.getElementById("aLogin").addEventListener("tap", function(){
+					//webview login = new 					
+					app.openWindow('login', '../../login.html');
+				});
+				
+				
+				//提交
+				document.getElementById('btnSubmit').addEventListener("tap", function() {
+					var param = utils.getFormValues("mainForm");
+					param.question = document.getElementById("question").value || "";
+					if(state){
+						param.userid = state.userid.userid;
+						param.sessionid = state.sessionid;
+						param.companyid = state.companyid;
+					}else{
+						param.userid = 0;
+						param.sessionid = null;
+						param.companyid = 0;
+					}
+					
+					param.contact = document.getElementById('contact').value || '';
+					if(param.question.trim() == ""){
+						plus.nativeUI.alert('请填写您要表达的问题！');
+						return;
+					}
+					//保存函数
+					var saveFun = function() {
+						console.log(JSON.stringify(param)); 
+						app.showWaiting('提交中...');
+						app.ajax('/Feedback/Services/addNewFeedBack', param, function(data) {
+							if(data.s == "ok") {																
+								utils.clearEmpty("mainForm", [], []);
+								picture.pictures.clearForm();
+								doc.getElementById('question').value = '';
+								app.closeWaiting();
+								var btnArray = ['继续反馈意见', '返回'];
+								$.confirm('非常感谢您的问题或建议，我们将及时跟进解决。', '民情直通车', btnArray, function(e) {
+									if (e.index == 1) {
+										webview.close();
+									} else {
+										// 清空内容再次填写
+									}
+								})
+							} else {
+								app.closeWaiting();
+								plus.nativeUI.alert(data.data);
+							}
+						});
+					};
+					//上传附件
+					if(app.isEternet()) {
+						if(picture.pictures.files.length == 0) {
+							saveFun();
+						} else {
+							var filearr = picture.pictures.files;
+							app.uploadFiles(filearr, function(t) {
+								var filesArr = [];
+								for(a = 0; a < filearr.length; a++) {
+									filesArr.push(filearr[a].name);
+								}
+								console.log(JSON.stringify(filesArr)); 
+								param.fileid = filesArr.join(',');
+								saveFun();
+							})
+						}
+					}
+				});
+		
+				webview.show('slide-in-right');
+		
+			});
+		}(mui, document));
+    </script>
+</html>

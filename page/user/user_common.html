@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" class="feedback">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/mui/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/iconfont.css" />
+		<style>
+			.mui-btn {
+				padding: 10px;
+			}
+			
+			input,
+			select,
+			textarea {
+				font-size: 14px;
+			}
+			
+			label {
+				font-size: 15px;
+				width: 20% !important;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 80% !important;
+			}
+			
+			.right_icon {
+				float: right;
+				margin-top: -32px;
+				margin-right: 10px;
+				color: #BBBBBB
+			}
+			
+			label .iconfont {
+				font-size: 20px;
+				padding: 2px;
+			}
+			
+			.username {
+				display: inline-block;
+				padding-top: 12px;
+				color: #000
+			}
+			
+			.mui-input-group {
+				margin: 5px 0
+			}
+			
+			.iconfont {
+				padding: 0;
+			}
+		</style>
+	</head>
+
+	<body style="margin-bottom:70px">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">修改信息</h1>
+			<a id="up" class="mui-icon mui-pull-right" style="font-size:14px;top:6px">确定</a>
+		</header>
+		<div class="mui-content" style="top:45px;background-color: #efeff4;">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<form id="mainForm" class="mui-input-group" style="background-color: #efeff4;">
+						<div class="mui-input-group">
+							<div class="mui-input-row">
+								<input id='name' type="text" placeholder="" value="" />
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/mui/mui.min.js"></script>
+	<script src="../../js/common/utils.js"></script>
+	<script src="../../js/common/app.js"></script>
+	<script type="text/javascript">
+		(function($, doc) {
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll();
+			$.plusReady(function() {
+				var webview = plus.webview.currentWebview();
+				var settings = app.getSettings();
+				var state = app.getState();
+				var appVersion = '';
+				app.getAppVersion(function(version){
+					appVersion = version;
+				});
+
+				var str = webview.str;
+				var type = webview.type;
+				switch(type) {
+					case 'mobile':
+						document.getElementById('title').innerHTML = "修改手机号";
+						break;
+					case 'nickname':
+						document.getElementById('title').innerHTML = "修改昵称";
+						break;
+					case 'cardid':
+						document.getElementById('title').innerHTML = "修改身份证号";
+						break;
+				}
+				document.getElementById('name').value = str;
+				mui.back = function() {
+						webview.close();
+					}
+					//提交
+				document.getElementById('up').addEventListener("tap", function() {
+					var param = utils.getFormValues("mainForm");
+					
+					param.type = type;
+					if(param.name == '') {
+						plus.nativeUI.toast("请填写内容");
+						return;
+					}
+					if(param.name == str) {
+						plus.nativeUI.toast("操作成功");
+						webview.close();
+						return false;
+					}
+					if(type == 'mobile') {
+						var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+						if(!myreg.test(param.name)) {
+							plus.nativeUI.toast("请输入有效的手机号码！");
+							return false;
+						}
+					}
+					if(type == 'cardid') {
+						if(!(/^(\d){15}|(\d{17}(\d|x|X))$/.test(param.name))) {
+							plus.nativeUI.toast("错误的身份证号！");
+							return false;
+						}
+					}
+					param.userid = state.userid;
+					param.sessionid = state.sessionid;
+					param.companyid = state.companyid;
+					param.uuid = plus.device.uuid;
+					param.model = plus.device.model;
+					param.vendor = plus.device.vendor;
+					param.os_name = plus.os.name;
+					param.os_version = plus.os.version;
+					param.os_vendor = plus.os.vendor;
+					param.app_version = appVersion;
+					app.ajax('/user/common/changeUserInfo', param, function(data) {
+						if(data.s == "ok") {
+							plus.nativeUI.toast("操作成功");
+							var parentPage = plus.webview.currentWebview().opener();
+							mui.fire(parentPage, type, {
+								value: param.name
+							});
+							webview.close();
+						} else {
+							plus.nativeUI.toast("操作失败");
+						}
+					})
+				})
+				webview.show('slide-in-right');
+			});
+		}(mui, document));
+	</script>
+
+</html>

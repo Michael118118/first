@@ -1,0 +1,4235 @@
+{
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"
+	],
+	"id": "com.chinalinkhouse.huantai",/*应用的标识，创建应用时自动生成，勿手动修改*/
+	"name": "民情直通车",/*应用名称，程序桌面图标名称*/
+	"version": {
+		"name": "1.0.2",/*应用版本名称*/
+		"code": "101"
+	},
+	"description": "民情直通车",/*应用描述信息*/
+	"icons": {
+		"72": "icon.png"
+	},
+	"launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"developer": {
+		"name": "",/*开发者名称*/
+		"email": "",/*开发者邮箱地址*/
+		"url": "http://www.chinalinkhouse.com"
+	},
+	"permissions": {
+		"Accelerometer": {
+			"description": "访问重力感应传感器"
+		},
+		"Audio": {
+			"description": "访问麦克风"
+		},
+		"Cache": {
+			"description": "管理应用缓存"
+		},
+
+		"Console": {
+			"description": "跟踪调试输出日志"
+		},
+		
+		"Device": {
+			"description": "访问设备信息"
+		},
+		"Downloader": {
+			"description": "文件下载管理"
+		},
+		"Events": {
+			"description": "应用扩展事件"
+		},
+		"Gallery": {
+			"description": "访问系统相册"
+		},
+		"Invocation": {
+			"description": "使用Native.js能力"
+		},
+
+		"Storage": {
+			"description": "管理应用本地数据"
+		},
+		"Uploader": {
+			"description": "管理文件上传任务"
+		},
+		"Runtime": {
+			"description": "访问运行期环境"
+		},
+		"XMLHttpRequest": {
+			"description": "跨域网络访问"
+		},
+		"Zip": {
+			"description": "文件压缩与解压缩"
+		},
+		
+		"Webview": {},
+		"NativeUI": {
+			"description": "原生UI控件"
+		},
+		"Navigator": {
+			"description": "浏览器信息"
+		},
+		"NativeObj": {
+			"description": "原生对象"
+		},
+		"Camera": {},
+		"File": {},
+		"Geolocation": {},
+		"Barcode": {}
+	},
+	"plus": {
+		"splashscreen": {
+			"autoclose": false,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+			"waiting": true,
+			"delay": "0"
+		},
+		"runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+		"distribute": {
+			"plugins": {
+				"push": {
+					
+				},
+				"maps": {
+					
+				},
+				"share": {
+					
+				},
+				"payment": {
+					
+				},
+				"oauth": {}
+			},
+			"apple": {
+				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+				"mobileprovision": "",/*iOS应用打包配置文件*/
+				"password": "",/*iOS应用打包个人证书导入密码*/
+				"p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+				"devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+				"frameworks": [],
+				"plistcmds": [
+					"Add :NSAppTransportSecurity:NSExceptionDomains dict ",
+					"Add :NSAppTransportSecurity:NSExceptionDomains:gongjiangyun.cn dict ",                      // 指定允许不使用ATS访问qq.com域名
+					"Add :NSAppTransportSecurity:NSExceptionDomains:gongjiangyun.cn:NSIncludesSubdomains bool true",
+					"Add :NSAppTransportSecurity:NSExceptionDomains:gongjiangyun.cn:NSExceptionAllowsInsecureHTTPLoads bool true",
+					"Set :NSCameraUsageDescription 拍照/摄像/扫描二维码",
+					"Set :NSMicrophoneUsageDescription 录制音频文件/语音识别",
+					"Set :NSPhotoLibraryUsageDescription 选择/保存图片",
+					"Set :NSLocationWhenInUseUsageDescription 为了记录您的工作位置，我们需要获取位置信息。",
+					"Set :NSLocationAlwaysUsageDescription 为了记录您的工作位置，我们需要获取位置信息。",
+					"Set :NSLocationAlwaysAndWhenInUseUsageDescription 为了记录您的工作位置，我们需要获取位置信息。"
+				]
+			},
+			"google": {
+				"packagename": "",/*Android应用包名，如io.dcloud.HelloH5*/
+				"keystore": "",/*Android应用打包使用的密钥库文件*/
+				"password": "",/*Android应用打包使用密钥库中证书的密码*/
+				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
+				//"permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.GET_TASKS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.CLEAR_APP_CACHE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.SEND_SMS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SMS\"/>","<uses-permission android:name=\"android.permission.READ_SMS\"/>"]
+				"permissions": ["<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-feature android:name=\"android.hardware.camera\"/>"]
+			},
+			"orientation": [
+				"portrait-primary",
+				"portrait-secondary"
+			],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"icons": {
+				"ios": {
+					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+					 /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+					"iphone": {
+						"normal": "unpackage/res/icons/57x57.png",/*iPhone普通屏幕程序图标，分辨率：57x57*/
+						"retina": "unpackage/res/icons/114x114.png",/*iPhone高分屏程序图标，分辨率：114x114*/
+						/*iPhone iOS7高分屏程序图标，分辨率：120x120*/
+						"spotlight-normal": "unpackage/res/icons/29x29.png", /*iPhone Spotlight搜索程序图标，分辨率：29x29*/
+						"spotlight-retina": "unpackage/res/icons/58x58.png", /*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
+						/*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "unpackage/res/icons/29x29.png", /*iPhone设置页面程序图标，分辨率：29x29*/
+						
+						
+						"app@2x":"unpackage/res/icons/120x120.png","app@3x":"unpackage/res/icons/180x180.png","settings@3x":"unpackage/res/icons/87x87.png","settings@2x":"unpackage/res/icons/58x58.png","spotlight@2x":"unpackage/res/icons/80x80.png","spotlight@3x":"unpackage/res/icons/120x120.png","notification@3x":"unpackage/res/icons/60x60.png","notification@2x":"unpackage/res/icons/40x40.png"
+					},
+					"ipad": {
+						"normal": "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
+						"retina": "unpackage/res/icons/144x144.png", /*iPad高分屏程序图标，分辨率：144x144*/
+						 /*iPad iOS7程序图标，分辨率：76x76*/
+						 /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						"spotlight-normal": "unpackage/res/icons/50x50.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+						"spotlight-retina": "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+						/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						/*iPad设置页面程序图标，分辨率：29x29*/
+						"app":"unpackage/res/icons/76x76.png","app@2x":"unpackage/res/icons/152x152.png","settings":"unpackage/res/icons/29x29.png","proapp@2x":"unpackage/res/icons/167x167.png","spotlight":"unpackage/res/icons/40x40.png","settings@2x":"unpackage/res/icons/58x58.png","spotlight@2x":"unpackage/res/icons/80x80.png","notification":"unpackage/res/icons/20x20.png","notification@2x":"unpackage/res/icons/40x40.png"
+					},"appstore":"unpackage/res/icons/1024x1024.png"
+				},
+				"android": {
+					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": "unpackage/res/icons/144x144.png",
+					"xxxhdpi": "unpackage/res/icons/192x192.png"
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"iphonex": "unpackage/res/images/ios1125-2436.png",
+						"retina47": "unpackage/res/images/ios750-1334.png",
+						"iphonexl": "unpackage/res/images/ios2436-1125.png",
+						"retina35": "unpackage/res/images/ios640-960.png",
+						"retina40": "unpackage/res/images/ios640-1136.png",
+						"retina55": "unpackage/res/images/ios1242-2208.png",
+						"retina55l": "unpackage/res/images/ios2208-1242.png"
+					},
+					"ipad": {
+						"portrait": "unpackage/res/images/ios768-1004.png",
+						"landscape": "unpackage/res/images/ios1024-748.png",
+						"portrait7": "unpackage/res/images/ios768-1024.png",
+						"landscape7": "unpackage/res/images/ios1024-768.png",
+						"portrait-retina": "unpackage/res/images/ios1536-2008.png",
+						"portrait-retina7": "unpackage/res/images/ios1536-2048.png",
+						"landscape-retina": "unpackage/res/images/ios2048-1496.png",
+						"landscape-retina7": "unpackage/res/images/ios2048-1536.png"
+					}
+				},
+				"android": {
+					"hdpi": "unpackage/res/images/安卓480-762.png",
+					"xhdpi": "unpackage/res/images/安卓720-1242.png",
+					"xxhdpi": "unpackage/res/images/安卓1080-1882.png"
+				}
+			},
+			"debug": false
+		},
+		"ads": {
+			"rp": false,
+			"splash": false,
+			"push": false
+		}
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"page/home/index.html",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/mui.ttf",
+					"js/common/utils.js",
+					"page/home/kanban.html",
+					"js/common/file.js",
+					"page/home/report.html",
+					"js/common/common.js",
+					"page/home/message.html",
+					"page/home/work.html",
+					"page/me/feedback.html"
+				],
+				"refer": [
+					"page/home/me.html",
+					"page/home/category.html",
+					"page/goods/search.html",
+					"page/home/more.html",
+					"page/cart/index.html",
+					"page/home/contact.html",
+					"page/message/mywork.html",
+					"page/more/index.html",
+					null,
+					"page/home/share.html",
+					"page/cms/index.html"
+				],
+				"priority": 0
+			},
+			"page/home/me.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/mui.ttf",
+					"images/logo.png",
+					"images/head.jpg",
+					"js/common/utils.js",
+					"js/mui/mui.view.js",
+					"css/common/feedback.css",
+					"js/common/offline.js",
+					"js/common/NjsPhoneApi.js",
+					"js/common/file.js",
+					"css/page/home/me.css",
+					"images/android_app.png",
+					"images/ios_app.png",
+					"images/weixin.jpg",
+					"css/common/pictures.css",
+					"images/photo.png"
+				],
+				"refer": [
+					"page/common/login.html",
+					"page/common/setting.html",
+					"page/order/list.html",
+					"page/common/loginmobile.html",
+					"login.html",
+					"page/me/projects.html",
+					"page/me/staff.html",
+					"page/user/user_common.html",
+					"page/user/password.html",
+					"page/me/offSubmit.html",
+					"page/home/contact1.html",
+					"page/me/feedback.html",
+					"page/me/help.html",
+					"page/me/contact.html",
+					"page/me/company_user.html",
+					"page/me/company.html",
+					"page/me/company_show.html",
+					"page/me/user_auth.html"
+				],
+				"priority": 0
+			},
+			"page/common/login.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/plugin/oauth.js",
+					"images/logo.png",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"images/logo1.png",
+					"js/common/utils.js"
+				],
+				"refer": [
+					"page/common/loginmobile.html"
+				],
+				"priority": 0
+			},
+			"page/home/index.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/common/utils.js",
+					"images/head.jpg",
+					"images/test.jpg",
+					"images/test2.jpg",
+					"images/test1.jpg",
+					"fonts/mui.ttf",
+					"js/common/offline.js",
+					"js/common/hashtable.js",
+					"js/plugin/websql.js"
+				],
+				"refer": [
+					"page/goods/result.html",
+					"page/goods/detail.html",
+					"page/order/list.html",
+					"page/common/login.html",
+					"page/common/loginmobile.html",
+					"page/activity/flash.html",
+					"page/message/chat.html",
+					"page/message/mywork.html",
+					"page/message/search.html",
+					"page/message/sys_chat.html",
+					"page/report/account.html",
+					"page/report/record.html",
+					"page/message/chat3.html",
+					"page/message/chat5.html",
+					"page/message/chatMain.html",
+					"page/message/sysChat.html",
+					"page/message/sysChat1.html"
+				],
+				"priority": 0
+			},
+			"page/home/category.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/mui.ttf",
+					"css/mui/mui.indexedlist.css",
+					"images/test2.jpg",
+					"images/test1.jpg",
+					"images/test.jpg"
+				],
+				"refer": [
+					"page/goods/result.html"
+				],
+				"priority": 0
+			},
+			"page/goods/result.html": {
+				"resources": [
+					"page/goods/resultinner.html",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/common/setting.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/common/address.html",
+					"page/common/nickname.html"
+				],
+				"priority": 0
+			},
+			"page/goods/detail.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/plugin/cart.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"js/plugin/file.js",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/plugin/share.js",
+					"js/common/utils.js",
+					"js/mui/mui.lazyload.img.js",
+					"js/mui/mui.lazyload.js",
+					"js/mui/mui.previewimage.js",
+					"js/mui/mui.zoom.js"
+				],
+				"refer": [
+					"page/order/edit.html",
+					"page/cart/index.html"
+				],
+				"priority": 0
+			},
+			"page/order/edit.html": {
+				"resources": [
+					"js/plugin/payment.js",
+					"js/plugin/order.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/common/utils.js",
+					"js/plugin/cart.js",
+					"css/mui/mui.picker.min.css",
+					"css/mui/mui.poppicker.css",
+					"js/mui/mui.picker.min.js",
+					"js/mui/mui.poppicker.js"
+				],
+				"refer": [
+					"page/common/address.html",
+					"page/order/success.html",
+					"page/order/info.html"
+				],
+				"priority": 0
+			},
+			"page/goods/search.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/goods/result.html"
+				],
+				"priority": 0
+			},
+			"page/goods/resultinner.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"page/goods/detail.html"
+				],
+				"priority": 0
+			},
+			"page/order/listinner.html": {
+				"resources": [
+					"js/plugin/order.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/order/info.html"
+				],
+				"priority": 0
+			},
+			"page/order/list.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"page/order/listinner.html",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/order/search.html"
+				],
+				"priority": 0
+			},
+			"page/common/address.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/common/utils.js"
+				],
+				"refer": [
+					"page/common/editaddress.html"
+				],
+				"priority": 0
+			},
+			"page/common/editaddress.html": {
+				"resources": [
+					"css/mui/mui.picker.min.css",
+					"js/data/city.data-3.js",
+					"css/mui/mui.poppicker.css",
+					"js/mui/mui.picker.min.js",
+					"js/common/utils.js",
+					"js/mui/mui.poppicker.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/common/loginmobile.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"css/common/iconfont.css",
+					"js/common/utils.js"
+				],
+				"refer": [
+					"page/common/register.html",
+					"page/common/register1.html"
+				],
+				"priority": 0
+			},
+			"page/order/info.html": {
+				"resources": [
+					"fonts/iconfont.ttf",
+					"js/common/utils.js",
+					"js/mui/mui.min.js",
+					"js/plugin/order.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"images/shouhuo.png",
+					"images/good.png",
+					"images/wuliu.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/order/search.html": {
+				"resources": [
+					"js/mui/mui.picker.min.js",
+					"js/common/utils.js",
+					"css/mui/mui.picker.min.css",
+					"fonts/iconfont.ttf",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/order/search-list.html"
+				],
+				"priority": 0
+			},
+			"page/home/more.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.min.css",
+					"js/common/app.js",
+					"js/common/utils.js"
+				],
+				"refer": [
+					"page/articles/detail.html",
+					"page/articles/sall_list.html"
+				],
+				"priority": 0
+			},
+			"page/articles/detail.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/common/utils.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/articles/sall_list.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/common.css"
+				],
+				"refer": [
+					"page/articles/art_list.html"
+				],
+				"priority": 0
+			},
+			"page/articles/art_list.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/common/utils.js",
+					"css/mui/mui.min.css"
+				],
+				"refer": [
+					"page/articles/detail.html"
+				],
+				"priority": 0
+			},
+			"page/order/success.html": {
+				"resources": [],
+				"refer": [
+					"page/order/info.html"
+				],
+				"priority": 0
+			},
+			"page/order/search-list.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/plugin/order.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/order/info.html"
+				],
+				"priority": 0
+			},
+			"page/cart/index.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/plugin/cart.js",
+					"js/common/app.js",
+					"js/common/utils.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/order/index.html",
+					"page/order/edit.html"
+				],
+				"priority": 0
+			},
+			"page/order/index.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/plugin/order.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/plugin/cart.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/activity/flash.html": {
+				"resources": [
+					"page/activity/flash_sale.html",
+					"fonts/mui.ttf",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/activity/flash_sale.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/activity/flash_info.html",
+					"page/goods/detail.html"
+				],
+				"priority": 0
+			},
+			"page/activity/flash_info.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/plugin/file.js",
+					"css/common/common.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/common/register.html": {
+				"resources": [
+					"css/common/feedback.css",
+					"js/common/feedback.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/common/dicselect.html"
+				],
+				"priority": 0
+			},
+			"page/common/register1.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"css/common/feedback.css",
+					"js/common/feedback.js"
+				],
+				"refer": [
+					"page/common/dicselect.html"
+				],
+				"priority": 0
+			},
+			"page/common/dicselect.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.indexedlist.css",
+					"css/mui/mui.min.css",
+					"js/common/utils.js",
+					"css/common/common.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/common/nickname.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/home/contact.html": {
+				"resources": [
+					"css/mui/mui.indexedlist.css",
+					"images/test1.jpg",
+					"images/test2.jpg",
+					"images/test.jpg",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"images/head.jpg",
+					"js/common/utils.js",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf",
+					"js/common/offline.js",
+					"js/common/syncdata.js"
+				],
+				"refer": [
+					"page/contact/add_contact.html",
+					"page/contact/add_contact1.html",
+					"page/contact/search.html",
+					"page/contact/contact_detail.html",
+					"page/message/chat.html",
+					"page/contact/add_user.html",
+					"page/common/contact_scan.html",
+					"page/common/barcode_scan.html"
+				],
+				"priority": 0
+			},
+			"page/message/chat.html": {
+				"resources": [
+					"js/mui/arttmpl.js",
+					"css/mui/mui.imageviewer.css",
+					"js/mui/mui.imageViewer.js",
+					"js/mui/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.min.css",
+					"images/test.jpg",
+					"images/test1.jpg",
+					"js/common/app.js",
+					"css/common/common.css",
+					"images/zps.png",
+					"images/2.jpg",
+					"images/1.jpg",
+					"js/common/utils.js",
+					"images/head.jpg",
+					"js/plugin/arttmpl.js",
+					"js/common/menu.js",
+					"js/common/watermark.min.js",
+					"js/common/file.js",
+					"js/plugin/jquery-1.7.2.min.js",
+					"js/plugin/jquery.fn.gantt.js",
+					"page/message/right_add.html",
+					"css/message/chat.css",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"css/common/img-thumb.css",
+					"images/img_error.jpg",
+					"images/default_img.png",
+					"images/video.png"
+				],
+				"refer": [
+					"page/message/account.html",
+					"page/message/chatReply.html",
+					"page/more/check_receive/step_check.html",
+					"page/more/safety/dualDetail.html",
+					"page/more/check_receive/check_chatdetail.html",
+					"page/more/task/receive_task.html",
+					"page/more/check_receive/room_check.html",
+					"page/more/material/dualSamplingwitness.html",
+					"page/more/handover/handover_check.html",
+					"page/more/task/assign_mission.html",
+					"page/report/staff/report.html",
+					"page/report/complete.html",
+					"page/report/query/main.html",
+					"page/more/check/add_check.html",
+					"page/more/work/record.html",
+					"page/more/work/detail.html",
+					"page/message/chatReply4Ios.html",
+					"page/common/video.html"
+				],
+				"priority": 0
+			},
+			"page/message/account.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/message/mywork.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"images/test1.jpg",
+					"images/test.jpg"
+				],
+				"refer": [
+					"page/message/account.html",
+					"page/message/work_detail.html"
+				],
+				"priority": 0
+			},
+			"page/message/work_detail.html": {
+				"resources": [
+					"js/common/utils.js",
+					"css/common/feedback.css",
+					"js/common/feedback.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.min.css",
+					"css/common/common.css",
+					"fonts/iconfont.ttf",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/common/dicselect.html",
+					"page/message/add_check.html"
+				],
+				"priority": 0
+			},
+			"page/message/add_check.html": {
+				"resources": [
+					"js/common/utils.js",
+					"css/common/feedback.css",
+					"js/common/feedback.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"fonts/iconfont.ttf",
+					"css/common/iconfont.css",
+					"css/common/userback.css",
+					"js/common/userback.js",
+					"images/jiahao.png",
+					"images/photo.png",
+					"js/common/resback.js",
+					"css/common/resback.css"
+				],
+				"refer": [
+					"page/common/dicselect.html",
+					"page/message/project.html",
+					"page/message/step.html",
+					"page/message/position.html"
+				],
+				"priority": 0
+			},
+			"page/message/project.html": {
+				"resources": [
+					"css/common/resback.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"images/jiahao.png",
+					"js/common/utils.js",
+					"css/common/feedback.css",
+					"css/common/iconfont.css",
+					"css/common/userback.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"images/photo.png",
+					"css/mui/mui.min.css",
+					"js/common/resback.js",
+					"js/common/feedback.js",
+					"js/common/userback.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/message/step.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/message/position.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/index.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/common/menu.js"
+				],
+				"refer": [
+					"page/message/add_check.html",
+					"page/more/assign_mission.html",
+					"page/more/com_mission.html",
+					"page/more/com_plan.html",
+					"page/more/task/assign_mission.html",
+					"page/more/task/com_mission.html",
+					"page/more/plan/com_plan.html",
+					"page/more/message/add_message.html",
+					"page/more/check/add_check.html",
+					"page/more/check/self_check.html",
+					"page/more/material/receive.html",
+					"page/more/work/rfid.html",
+					"page/more/work/productlocation.html",
+					"page/more/work/nodelocation.html",
+					"page/more/handover/index.html",
+					"page/more/safety/index.html",
+					"page/more/check/room_check.html",
+					"page/more/work/record.html",
+					"page/more/check/step_check.html",
+					"page/more/safety/weekcheck.html",
+					"page/more/safety/monthcheck.html",
+					"page/more/material/check.html",
+					"page/more/material/samplingwitness.html",
+					"page/more/datum/index.html",
+					"page/more/datum/drawing.html",
+					"page/more/task/index.html",
+					"page/more/material/barcode_scan.html",
+					"page/more/material/componentQuery.html",
+					"page/more/construction_diary/index.html"
+				],
+				"priority": 0
+			},
+			"page/more/assign_mission.html": {
+				"resources": [
+					"css/common/resback.css",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"images/jiahao.png",
+					"images/photo.png",
+					"js/common/utils.js",
+					"js/common/resback.js",
+					"css/common/feedback.css",
+					"js/common/feedback.js",
+					"css/common/common.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/mui/mui.min.css"
+				],
+				"refer": [
+					"page/common/dicselect.html",
+					"page/more/planlist.html"
+				],
+				"priority": 0
+			},
+			"page/more/planlist.html": {
+				"resources": [
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/common/utils.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/com_mission.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/common/utils.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/com_plan.html": {
+				"resources": [
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"js/common/utils.js",
+					"js/mui/mui.min.js",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"login.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"js/common/md5.min.js",
+					"images/loginbkg.png",
+					"js/plugin/notification.js",
+					"js/common/offline.js",
+					"images/logo.png",
+					"js/common/update.js"
+				],
+				"refer": [
+					"index.html",
+					"page/user/register.html",
+					"page/user/forget_password.html",
+					"syncdata.html",
+					"forgetPass.html",
+					"register.html",
+					"new.html",
+					"register_project.html",
+					"register_company.html",
+					"page/common/position.html",
+					"page/common/project.html",
+					"register_company0.html",
+					"page/me/feedback.html"
+				],
+				"priority": 0
+			},
+			"page/user/register.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"css/common/new_main.css",
+					"js/common/app.js",
+					"js/common/utils.js",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/user/forget_password.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/contact/add_contact1.html": {
+				"resources": [
+					"css/mui/mui.indexedlist.css",
+					"css/common/resback.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"images/jiahao.png",
+					"js/common/utils.js",
+					"css/common/feedback.css",
+					"css/common/iconfont.css",
+					"css/common/userback.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"images/photo.png",
+					"css/mui/mui.min.css",
+					"js/common/resback.js",
+					"js/common/feedback.js",
+					"js/common/userback.js",
+					"page/contact/add_contact1.html"
+				],
+				"refer": [
+					"page/common/dicselect.html",
+					"page/contact/project.html",
+					"page/common/barcode_scan.html",
+					"page/common/contact_scan.html"
+				],
+				"priority": 0
+			},
+			"page/contact/project.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/common/contact_scan.html": {
+				"resources": [
+					"css/mui/mui.indexedlist.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/contact/add_contact.html": {
+				"resources": [
+					"fonts/iconfont.ttf",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css"
+				],
+				"refer": [
+					"page/common/dicselect.html",
+					"page/common/select_list.html",
+					"page/common/contact_scan.html"
+				],
+				"priority": 0
+			},
+			"page/contact/search.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.indexedlist.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"images/head.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/contact/contact_detail.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"images/head.jpg",
+					"fonts/iconfont.ttf",
+					"js/common/offline.js",
+					"js/common/syncdata.js"
+				],
+				"refer": [
+					"page/contact/edit_contact.html",
+					"page/message/chat.html"
+				],
+				"priority": 0
+			},
+			"page/home/report.html": {
+				"resources": [
+					"js/common/menu.js",
+					"js/common/utils.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf",
+					"js/mui/mui.min.js",
+					"css/common/common.css",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/message/chatReply.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/mui/arttmpl.js",
+					"css/mui/mui.imageviewer.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"js/mui/mui.imageViewer.js",
+					"fonts/mui.ttf",
+					"js/plugin/arttmpl.js",
+					"images/head.jpg",
+					"css/message/chat.css",
+					"js/common/menu.js",
+					"page/message/right_add.html",
+					"css/message/chatReply.css",
+					"js/common/watermark.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/contact/add_user.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/common/contact_scan.html"
+				],
+				"priority": 0
+			},
+			"page/common/select_list.html": {
+				"resources": [
+					"css/mui/mui.indexedlist.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/common.css",
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/contact/edit_contact.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"fonts/iconfont.ttf",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/common/dicselect.html"
+				],
+				"priority": 0
+			},
+			"page/report/complete_gantt.html": {
+				"resources": [
+					"js/plugin/jquery-1.7.2.min.js",
+					"js/mui/mui.min.js",
+					"js/plugin/jquery.fn.gantt.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/gantt.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/account.html": {
+				"resources": [
+					"css/mui/mui.picker.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/mui/mui.picker.min.js",
+					"css/mui/mui.imageviewer.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.imageViewer.js",
+					"js/chart/pie.js",
+					"js/common/echarts.js"
+				],
+				"refer": [
+					"page/report/indexmain.html"
+				],
+				"priority": 0
+			},
+			"page/report/progress.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.imageviewer.css",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.imageViewer.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/query/main.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"page/report/query/workinfo.html",
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"page/report/query/menu.html"
+				],
+				"priority": 0
+			},
+			"page/report/query/workinfo.html": {
+				"resources": [
+					"css/mui/mui.imageviewer.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.imageViewer.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"css/common/img-thumb.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/check/workman.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.indexedlist.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"images/head.jpg",
+					"js/common/offline.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/message/add_message.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/message/history.html"
+				],
+				"priority": 0
+			},
+			"page/common/image_mark.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/plugin/wipe.js",
+					"js/common/offline.js",
+					"js/plugin/imgcvs.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/me/projects.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"syncdata.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/offline.js",
+					"js/common/syncdata.js",
+					"fonts/iconfont.ttf",
+					"js/common/file.js",
+					"images/syncdata-g.png",
+					"images/syncdata-in.png",
+					"images/syncdata-down.png",
+					"images/syncdata-down-gray.png",
+					"images/syncdata-in-gray.png"
+				],
+				"refer": [
+					"index.html"
+				],
+				"priority": 0
+			},
+			"page/user/user_common.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/user/password.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/md5.min.js",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/common/svg_inner.html": {
+				"resources": [
+					"js/plugin/canvg.min.js",
+					"js/common/file.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/plugin/snap.svg-min.js",
+					"js/plugin/snap.svg.js",
+					"js/plugin/canvg.js",
+					"js/common/utils.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/common/svg_mark.html": {
+				"resources": [
+					"page/common/svg_inner.html",
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/common/utils.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/check_receive/step_check.html": {
+				"resources": [
+					"js/mui/mui.previewimage.js",
+					"css/common/resback.css",
+					"js/mui/mui.zoom.js",
+					"css/common/common.css",
+					"images/jiahao.png",
+					"js/common/utils.js",
+					"css/common/feedback.css",
+					"css/common/iconfont.css",
+					"css/common/checkdetail.css",
+					"css/common/userback.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"images/photo.png",
+					"css/mui/mui.min.css",
+					"js/common/resback.js",
+					"js/common/userback.js",
+					"js/common/feedback.js",
+					"fonts/mui.ttf",
+					"css/common/userlist.css",
+					"js/common/userlist.js",
+					"js/common/watermark.min.js",
+					"css/mui/mui.imageviewer.css",
+					"js/mui/mui.imageViewer.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"images/default_img.png",
+					"css/common/img-thumb.css",
+					"js/common/file.js"
+				],
+				"refer": [
+					"page/more/check/workman.html"
+				],
+				"priority": 0
+			},
+			"page/report/record.html": {
+				"resources": [
+					"css/mui/mui.picker.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/mui/mui.picker.min.js",
+					"css/mui/mui.imageviewer.css",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.imageViewer.js",
+					"fonts/mui.ttf",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"css/common/img-thumb.css",
+					"images/default_img.png",
+					"js/common/file.js"
+				],
+				"refer": [
+					"page/more/work/project1.html",
+					"page/report/work_type.html",
+					"page/more/check/project.html",
+					"page/more/check/step.html"
+				],
+				"priority": 0
+			},
+			"page/more/check/selfcheck_detail.html": {
+				"resources": [
+					"js/common/file.js",
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/check/project_step.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/common/select_list.html"
+				],
+				"priority": 0
+			},
+			"page/more/check/step_check.html": {
+				"resources": [
+					"css/common/resback.css",
+					"js/common/file.js",
+					"fonts/mui.ttf",
+					"js/common/checkdetail.js",
+					"css/common/common.css",
+					"images/jiahao.png",
+					"js/common/utils.js",
+					"css/common/feedback.css",
+					"css/common/iconfont.css",
+					"js/plugin/imgcvs.js",
+					"css/common/checkdetail.css",
+					"css/common/userback.css",
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"images/photo.png",
+					"css/mui/mui.min.css",
+					"js/common/resback.js",
+					"js/common/userback.js",
+					"js/common/feedback.js",
+					"images/excel.png",
+					"css/common/userlist.css",
+					"js/common/watermark.min.js",
+					"js/common/userlist.js",
+					"css/common/more_check.css",
+					"css/mui/mui.imageviewer.css",
+					"js/mui/mui.imageViewer.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"images/default_img.png",
+					"css/common/img-thumb.css"
+				],
+				"refer": [
+					"page/more/check/project_step.html",
+					"page/common/dicselect.html",
+					"page/more/check/step_level_2.html",
+					"page/more/check/check_detail.html",
+					"page/more/check/workman.html",
+					"page/more/check/step_inspect.html",
+					"page/more/check/si_detail.html",
+					"page/more/check/tasklist.html",
+					"page/more/check/project.html",
+					"page/common/position.html"
+				],
+				"priority": 0
+			},
+			"page/more/check/step_level_2.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/common/dicselect.html"
+				],
+				"priority": 0
+			},
+			"page/more/safety/dualDetail.html": {
+				"resources": [
+					"js/mui/mui.previewimage.js",
+					"css/common/resback.css",
+					"js/mui/mui.zoom.js",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/feedback.css",
+					"css/common/iconfont.css",
+					"css/common/checkdetail.css",
+					"css/common/userback.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"css/mui/mui.min.css",
+					"js/common/resback.js",
+					"js/common/feedback.js",
+					"js/common/userback.js",
+					"images/jiahao.png",
+					"images/photo.png",
+					"fonts/mui.ttf",
+					"css/common/userlist.css",
+					"js/common/watermark.min.js",
+					"js/common/userlist.js",
+					"css/mui/mui.imageviewer.css",
+					"js/mui/mui.imageViewer.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"images/default_img.png",
+					"css/common/img-thumb.css",
+					"js/common/file.js"
+				],
+				"refer": [
+					"page/more/check/workman.html"
+				],
+				"priority": 0
+			},
+			"page/more/check_receive/check_chatdetail.html": {
+				"resources": [
+					"css/common/resback.css",
+					"css/common/common.css",
+					"images/jiahao.png",
+					"js/common/utils.js",
+					"css/common/feedback.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.imageViewer.js",
+					"css/common/userback.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"images/photo.png",
+					"css/mui/mui.min.css",
+					"js/common/resback.js",
+					"js/common/feedback.js",
+					"js/common/userback.js",
+					"fonts/mui.ttf",
+					"js/mui/mui.previewimage.js",
+					"js/mui/mui.zoom.js",
+					"css/common/userlist.css",
+					"js/common/watermark.min.js",
+					"js/common/userlist.js",
+					"css/mui/mui.imageviewer.css",
+					"images/video.png",
+					"images/default_img.png",
+					"css/common/img-thumb.css",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"js/common/file.js"
+				],
+				"refer": [
+					"page/common/dicselect.html",
+					"page/more/check/workman.html"
+				],
+				"priority": 0
+			},
+			"page/report/complete.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/common/timeline.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/common/string_utils.js"
+				],
+				"refer": [
+					"page/more/task/task_detail.html"
+				],
+				"priority": 0
+			},
+			"page/more/task/receive_task.html": {
+				"resources": [
+					"js/mui/mui.previewimage.js",
+					"css/common/resback.css",
+					"js/mui/mui.zoom.js",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/feedback.css",
+					"css/common/iconfont.css",
+					"css/common/userback.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/mui/mui.min.css",
+					"js/common/feedback.js",
+					"js/common/userback.js",
+					"fonts/mui.ttf",
+					"images/jiahao.png",
+					"images/photo.png",
+					"css/common/userlist.css",
+					"js/common/watermark.min.js",
+					"js/common/userlist.js",
+					"css/mui/mui.imageviewer.css",
+					"js/mui/mui.imageViewer.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"images/default_img.png",
+					"images/video.png",
+					"css/common/img-thumb.css",
+					"images/img_error.jpg",
+					"js/common/file.js"
+				],
+				"refer": [
+					"page/common/dicselect.html",
+					"page/more/check/workman.html",
+					"page/common/video.html"
+				],
+				"priority": 0
+			},
+			"page/report/com_task/index.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/chart/pie.js",
+					"js/common/echarts.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/report/com_task/indexmain.html"
+				],
+				"priority": 0
+			},
+			"page/report/staff/report.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/chart/pie.js",
+					"js/common/echarts.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/material.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/check_correct.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/echarts.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/chart/bar.js"
+				],
+				"refer": [
+					"page/report/check_correct_m.html"
+				],
+				"priority": 0
+			},
+			"page/report/safety_correct.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/echarts.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/chart/bar.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/check_receive/room_check.html": {
+				"resources": [
+					"js/mui/mui.previewimage.js",
+					"css/common/resback.css",
+					"js/mui/mui.zoom.js",
+					"images/jiahao.png",
+					"css/common/feedback.css",
+					"css/common/iconfont.css",
+					"css/common/checkdetail.css",
+					"css/common/userback.css",
+					"fonts/iconfont.ttf",
+					"images/photo.png",
+					"js/common/resback.js",
+					"js/common/feedback.js",
+					"js/common/userback.js",
+					"css/common/userlist.css",
+					"js/common/watermark.min.js",
+					"css/mui/mui.imageviewer.css",
+					"js/common/userlist.js",
+					"js/common/utils.js",
+					"js/mui/mui.imageViewer.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/mui/mui.min.js",
+					"js/libs/zepto.min.js",
+					"js/common/app.js",
+					"images/default_img.png",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"js/common/file.js"
+				],
+				"refer": [
+					"page/more/check/workman.html"
+				],
+				"priority": 0
+			},
+			"page/report/com_task/pindex.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/chart/pie.js",
+					"js/common/echarts.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/report/com_task/pindexinfo.html"
+				],
+				"priority": 0
+			},
+			"page/report/account1.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/chart/pie.js",
+					"js/common/echarts.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/report/indexmain1.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/project1.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/common/select_list.html"
+				],
+				"priority": 0
+			},
+			"page/more/material/check.html": {
+				"resources": [
+					"css/common/resback.css",
+					"images/photo.png",
+					"images/jiahao.png",
+					"js/common/resback.js",
+					"css/common/feedback.css",
+					"js/common/feedback.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/mui/mui.min.css",
+					"js/common/userback.js",
+					"css/common/userback.css"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/material/material_cate.html",
+					"page/more/material/add_checks.html",
+					"page/more/check/workman.html"
+				],
+				"priority": 0
+			},
+			"page/more/material/samplingwitness.html": {
+				"resources": [
+					"css/common/userback.css",
+					"js/mui/mui.min.js",
+					"css/common/resback.css",
+					"css/common/common.css",
+					"images/jiahao.png",
+					"images/photo.png",
+					"css/mui/mui.min.css",
+					"js/common/resback.js",
+					"css/common/iconfont.css",
+					"css/common/feedback.css",
+					"js/common/userback.js",
+					"js/common/feedback.js",
+					"fonts/mui.ttf",
+					"js/common/utils.js",
+					"js/common/app.js",
+					"css/common/userlist.css",
+					"js/common/watermark.min.js",
+					"js/common/userlist.js",
+					"js/common/offline.js",
+					"css/mui/mui.imageviewer.css",
+					"css/common/img-thumb.css",
+					"js/common/file.js",
+					"js/mui/mui.imageViewer.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js"
+				],
+				"refer": [
+					"page/more/check/workman.html"
+				],
+				"priority": 0
+			},
+			"page/more/material/dualSamplingwitness.html": {
+				"resources": [
+					"js/mui/mui.previewimage.js",
+					"css/common/resback.css",
+					"js/mui/mui.zoom.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/feedback.css",
+					"css/common/iconfont.css",
+					"css/common/checkdetail.css",
+					"css/common/userback.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/mui/mui.min.css",
+					"js/common/resback.js",
+					"js/common/feedback.js",
+					"js/common/userback.js",
+					"fonts/iconfont.ttf",
+					"images/jiahao.png",
+					"images/photo.png",
+					"css/common/userlist.css",
+					"js/common/watermark.min.js",
+					"js/common/userlist.js",
+					"images/default_img.png",
+					"css/mui/mui.imageviewer.css",
+					"css/common/img-thumb.css",
+					"js/common/file.js",
+					"js/mui/mui.imageViewer.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js"
+				],
+				"refer": [
+					"page/more/check/workman.html"
+				],
+				"priority": 0
+			},
+			"page/more/check/step_inspect.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"css/common/more_step.css"
+				],
+				"refer": [
+					"page/common/dicselect.html"
+				],
+				"priority": 0
+			},
+			"page/more/check/si_detail.html": {
+				"resources": [
+					"js/common/file.js",
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/position_query/index.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css"
+				],
+				"refer": [
+					"page/report/position_query/menu.html"
+				],
+				"priority": 0
+			},
+			"page/report/work_type.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"js/common/work_type.js",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"page/more/check/add_check.html",
+					"page/more/safety/index.html",
+					"page/more/check/self_check.html"
+				],
+				"priority": 0
+			},
+			"page/more/handover/handover_check.html": {
+				"resources": [
+					"js/mui/mui.previewimage.js",
+					"css/common/resback.css",
+					"js/mui/mui.zoom.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"images/jiahao.png",
+					"js/common/utils.js",
+					"css/common/feedback.css",
+					"css/common/iconfont.css",
+					"css/common/checkdetail.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"images/photo.png",
+					"css/mui/mui.min.css",
+					"js/common/resback.js",
+					"js/common/feedback.js",
+					"css/common/userlist.css",
+					"js/common/userlist.js",
+					"js/common/watermark.min.js",
+					"css/mui/mui.imageviewer.css",
+					"js/mui/mui.imageViewer.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"images/default_img.png",
+					"css/common/img-thumb.css",
+					"js/common/file.js"
+				],
+				"refer": [
+					"page/more/check/workman.html"
+				],
+				"priority": 0
+			},
+			"page/report/query/project.html": {
+				"resources": [
+					"page/report/query/workinfo.html",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"page/report/query/p_sub_page.html",
+					"images/left.png",
+					"js/common/echarts.js",
+					"js/chart/map.js",
+					"page/report/query/project.js"
+				],
+				"refer": [
+					"page/report/query/menu.html",
+					"page/report/query/p_menu.html",
+					"page/report/query/p_table.html"
+				],
+				"priority": 0
+			},
+			"page/report/query/p_menu.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/common/utils.js",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/query/p_sub_page.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/mui/mui.imageviewer.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.imageViewer.js",
+					"js/common/echarts.js",
+					"js/chart/pie.js",
+					"js/chart/bar.js",
+					"js/chart/map.js",
+					"images/back.png",
+					"images/back1.png",
+					"images/left.png"
+				],
+				"refer": [
+					"page/report/query/main.html"
+				],
+				"priority": 0
+			},
+			"page/report/query/manlist.html": {
+				"resources": [
+					"css/mui/mui.indexedlist.css",
+					"images/head.jpg",
+					"css/common/common.css",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/query/p_table.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"page/report/query/main.html",
+					"page/report/query/baidu_map.html"
+				],
+				"priority": 0
+			},
+			"page/report/query/baidu_map.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/common/position.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/common/barcode_scan.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"js/common/app.js"
+				],
+				"refer": [
+					"page/more/material/scanDetail.html",
+					"page/common/showStr.html",
+					"page/more/index.html",
+					"page/more/work/addCC.html",
+					"page/more/work/addOSS.html",
+					"page/more/work/addCuring.html",
+					"page/more/work/addCAR.html",
+					"page/more/work/addSend4Test.html",
+					"page/more/work/addCCReport.html",
+					"page/more/work/infoDetail.html",
+					"page/more/work/addCAR1.html",
+					"page/more/work/list.html",
+					"page/more/work/addCC1.html",
+					"page/more/work/addOSS1.html"
+				],
+				"priority": 0
+			},
+			"page/me/offSubmit.html": {
+				"resources": [
+					"js/common/file.js",
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.imageviewer.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.imageViewer.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"css/common/img-thumb.css",
+					"css/common/icons-extra.css",
+					"css/page/kanban.css",
+					"css/common/userlist.css",
+					"images/video.png",
+					"fonts/iconfont.ttf",
+					"fonts/mui-icons-extra.ttf",
+					"images/jiahao.png"
+				],
+				"refer": [
+					"page/common/video.html"
+				],
+				"priority": 0
+			},
+			"forgetPass.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/md5.min.js",
+					"js/common/utils.js",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"setPass.html"
+				],
+				"priority": 0
+			},
+			"setPass.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/md5.min.js",
+					"js/common/utils.js",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/check_correct_m.html": {
+				"resources": [
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"page/report/check_correct_detail.html",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/common/utils.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/check_correct_detail.html": {
+				"resources": [
+					"css/mui/mui.imageviewer.css",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.imageViewer.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/message/right_add.html": {
+				"resources": [
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/menu.js"
+				],
+				"refer": [
+					"page/more/task/assign_mission.html",
+					"page/more/task/com_mission.html",
+					"page/more/check/step_check.html",
+					"page/more/safety/index.html",
+					"page/more/message/add_message.html",
+					"page/more/check/add_check.html",
+					"page/more/work/record.html",
+					"page/more/task/index.html"
+				],
+				"priority": 0
+			},
+			"page/message/chat3.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"css/mui/mui.min.css",
+					"js/common/file.js",
+					"js/common/app.js",
+					"js/common/watermark.min.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.imageviewer.css",
+					"js/plugin/arttmpl.js",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"js/common/menu.js",
+					"js/mui/mui.imageViewer.js",
+					"css/message/chat.css",
+					"images/head.jpg"
+				],
+				"refer": [
+					"page/more/work/detail.html",
+					"page/more/check_receive/check_chatdetail.html",
+					"page/message/chatReply.html"
+				],
+				"priority": 0
+			},
+			"page/message/chat5.html": {
+				"resources": [
+					"js/common/file.js",
+					"js/common/watermark.min.js",
+					"fonts/mui.ttf",
+					"css/message/chat.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"js/mui/mui.imageViewer.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/plugin/arttmpl.js",
+					"css/mui/mui.min.css",
+					"js/common/menu.js",
+					"images/head.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/message/chatMain.html": {
+				"resources": [
+					"js/common/file.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/watermark.min.js",
+					"fonts/mui.ttf",
+					"css/mui/mui.imageviewer.css",
+					"js/plugin/arttmpl.js",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"js/common/menu.js",
+					"js/mui/mui.imageViewer.js",
+					"page/message/pullrefresh_sub.html",
+					"css/message/chat.css",
+					"page/message/chat.html",
+					"page/message/chatSub.html",
+					"page/message/chatSub1.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/message/pullrefresh_sub.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"css/message/chat.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/common.css",
+					"images/head.jpg",
+					"js/common/file.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/watermark.min.js",
+					"fonts/mui.ttf",
+					"js/plugin/arttmpl.js",
+					"js/common/utils.js",
+					"js/common/menu.js",
+					"js/mui/mui.imageViewer.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/work/detail.html": {
+				"resources": [
+					"css/common/checkdetail.css",
+					"js/mui/mui.previewimage.js",
+					"css/common/userlist.css",
+					"js/mui/mui.zoom.js",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"css/common/feedback.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/utils.js",
+					"fonts/mui.ttf",
+					"images/5928075bdd600.mp4",
+					"css/common/bvd.css",
+					"js/common/bvd.js",
+					"css/mui/mui.imageviewer.css",
+					"js/mui/mui.imageViewer.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"images/default_img.png",
+					"images/video.png",
+					"images/img_error.jpg",
+					"css/common/img-thumb.css"
+				],
+				"refer": [
+					"page/common/video.html"
+				],
+				"priority": 0
+			},
+			"page/message/sysChat.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/message/chat.css",
+					"js/plugin/arttmpl.js",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"js/common/menu.js",
+					"css/message/sys_chat.css",
+					"images/head.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/message/sysChat1.html": {
+				"resources": [
+					"css/message/sys_chat.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/plugin/arttmpl.js",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"js/common/menu.js",
+					"css/message/sys_chat1.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/indexmain1.html": {
+				"resources": [
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"page/report/indexaccountpjt.html",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/common/utils.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/indexaccountpjt.html": {
+				"resources": [
+					"css/mui/mui.imageviewer.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.imageViewer.js",
+					"css/common/common.css",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/message/chatSub.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"css/message/chat.css",
+					"js/plugin/arttmpl.js",
+					"js/common/utils.js",
+					"js/common/menu.js",
+					"page/message/right_add.html",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/common/watermark.min.js",
+					"images/head.jpg",
+					"js/mui/mui.imageViewer.js"
+				],
+				"refer": [
+					"page/more/work/detail.html",
+					"page/message/chatReply.html",
+					"page/more/safety/dualDetail.html",
+					"page/more/task/receive_task.html",
+					"page/more/handover/handover_check.html",
+					"page/more/check_receive/check_chatdetail.html"
+				],
+				"priority": 0
+			},
+			"page/message/chatSub1.html": {
+				"resources": [
+					"js/plugin/arttmpl.js",
+					"js/common/utils.js",
+					"js/common/menu.js",
+					"css/mui/mui.min.css",
+					"css/message/chat.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/message/chatReply4Ios.html": {
+				"resources": [
+					"css/mui/mui.imageviewer.css",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/plugin/arttmpl.js",
+					"js/common/utils.js",
+					"js/mui/mui.imageViewer.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/datum/index.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"js/plugin/sview.js",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/output_statist.html": {
+				"resources": [
+					"css/common/timeline.css",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/query/contract.html": {
+				"resources": [
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/com_task/indexaccount.html": {
+				"resources": [
+					"css/mui/mui.imageviewer.css",
+					"js/mui/mui.imageViewer.js",
+					"css/mui/mui.min.css",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/com_task/indexmain.html": {
+				"resources": [
+					"page/report/com_task/indexaccount.html",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"register.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/md5.min.js",
+					"js/common/utils.js",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"register_company.html",
+					"register_company0.html"
+				],
+				"priority": 0
+			},
+			"register_company.html": {
+				"resources": [
+					"css/mui/mui.picker.min.css",
+					"css/mui/mui.poppicker.css",
+					"js/mui/mui.picker.min.js",
+					"css/mui/mui.min.css",
+					"js/mui/mui.poppicker.js",
+					"css/common/common.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/common/md5.min.js",
+					"js/common/utils.js",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"register_project.html",
+					"index.html"
+				],
+				"priority": 0
+			},
+			"register_project.html": {
+				"resources": [
+					"css/mui/mui.picker.min.css",
+					"css/mui/mui.poppicker.css",
+					"css/mui/mui.min.css",
+					"css/common/common.css",
+					"css/common/iconfont.css",
+					"fonts/mui.ttf",
+					"js/mui/mui.picker.min.js",
+					"js/mui/mui.poppicker.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/md5.min.js",
+					"js/common/utils.js"
+				],
+				"refer": [
+					"login.html",
+					"page/common/localAddress.html"
+				],
+				"priority": 0
+			},
+			"new.html": {
+				"resources": [
+					"images/syncdata-g.png",
+					"fonts/mui.ttf",
+					"images/syncdata-in.png",
+					"css/common/common.css",
+					"images/syncdata-down.png",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/common/file.js",
+					"js/common/offline.js",
+					"js/common/syncdata.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/material/barcode_scan.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js"
+				],
+				"refer": [
+					"page/more/material/scanDetail.html"
+				],
+				"priority": 0
+			},
+			"page/more/material/scanDetail.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/material/componentQuery.html": {
+				"resources": [
+					"css/mui/mui.min.css"
+				],
+				"refer": [
+					"page/common/barcode_scan.html"
+				],
+				"priority": 0
+			},
+			"page/common/video.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"images/video_loading.png",
+					"css/common/common.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/safety/safety_detail.html": {
+				"resources": [
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/construction_diary/index.html": {
+				"resources": [
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"css/common/userlist.css",
+					"js/mui/mui.zoom.js",
+					"page/more/construction_diary/index-inner.html",
+					"css/mui/mui.imageviewer.css",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"css/common/feedback.css",
+					"js/mui/mui.imageViewer.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/utils.js"
+				],
+				"refer": [
+					"page/more/construction_diary/setheader.html",
+					"page/more/construction_diary/setcategory.html",
+					"page/more/construction_diary/construction_diary.html"
+				],
+				"priority": 0
+			},
+			"page/more/construction_diary/setheader.html": {
+				"resources": [
+					"js/page/more/construction_diary/index.js",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"css/page/more/construction_diary/setheader.css",
+					"js/page/more/construction_diary/header.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/mui/mui.min.js",
+					"js/libs/zepto.min.js",
+					"js/common/app.js",
+					"js/mui/mui.zoom.js",
+					"js/common/utils.js",
+					"js/mui/mui.imageViewer.js",
+					"css/common/userlist.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/feedback.css"
+				],
+				"refer": [
+					"page/more/construction_diary/setproject.html",
+					"page/more/construction_diary/setcategory.html"
+				],
+				"priority": 0
+			},
+			"page/more/construction_diary/setproject.html": {
+				"resources": [
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/construction_diary/setcategory.html": {
+				"resources": [
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"css/common/userlist.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/feedback.css",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/mui/mui.min.js",
+					"js/libs/zepto.min.js",
+					"js/common/app.js",
+					"js/mui/mui.zoom.js",
+					"js/common/utils.js",
+					"js/mui/mui.imageViewer.js"
+				],
+				"refer": [
+					"page/more/construction_diary/construction_diary.html"
+				],
+				"priority": 0
+			},
+			"page/more/construction_diary/construction_diary.html": {
+				"resources": [
+					"js/common/watermark.min.js",
+					"images/photo.png",
+					"js/common/userlist.js",
+					"js/common/feedback.js",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"js/common/file.js",
+					"js/mui/mui.zoom.js",
+					"js/common/utils.js",
+					"js/mui/mui.imageViewer.js",
+					"js/mui/mui.min.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"css/common/userlist.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/feedback.css",
+					"images/video.png"
+				],
+				"refer": [
+					"page/more/construction_diary/setcategory.html"
+				],
+				"priority": 0
+			},
+			"page/more/construction_diary/index-inner.html": {
+				"resources": [
+					"images/default_img.png",
+					"css/common/userlist.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"css/common/feedback.css",
+					"images/img_error.jpg",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/mui/mui.min.js",
+					"js/libs/zepto.min.js",
+					"js/common/app.js",
+					"js/mui/mui.imageViewer.js",
+					"images/video.png"
+				],
+				"refer": [
+					"page/more/construction_diary/construction_diary.html",
+					"page/common/video.html"
+				],
+				"priority": 0
+			},
+			"page/me/feedback.html": {
+				"resources": [
+					"js/common/watermark.min.js",
+					"css/mui/mui.imageviewer.css",
+					"images/photo.png",
+					"css/mui/mui.min.css",
+					"css/common/feedback.css",
+					"js/common/feedback.js",
+					"js/page/me/feedback.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/utils.js",
+					"js/common/pictures.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/common/pictures.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"login.html"
+				],
+				"priority": 0
+			},
+			"page/me/help.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/material/material_plan.html": {
+				"resources": [
+					"css/common/more_step.css",
+					"css/mui/mui.min.css",
+					"js/common/offline.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/utils.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/message/history.html": {
+				"resources": [
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"css/common/userlist.css",
+					"js/mui/mui.zoom.js",
+					"css/mui/mui.imageviewer.css",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"css/common/feedback.css",
+					"page/more/message/history-inner.html",
+					"js/mui/mui.imageViewer.js",
+					"page/more/message/history_inner.html"
+				],
+				"refer": [
+					"page/more/message/history_menu.html"
+				],
+				"priority": 0
+			},
+			"page/more/message/history-inner.html": {
+				"resources": [
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"css/common/userlist.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/feedback.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/message/history_inner.html": {
+				"resources": [
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"css/mui/mui.imageviewer.css"
+				],
+				"refer": [
+					"page/more/message/history_detail.html"
+				],
+				"priority": 0
+			},
+			"page/more/message/history_detail.html": {
+				"resources": [
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/message/history_menu.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/utils.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/com_task/pindexlist.html": {
+				"resources": [
+					"css/mui/mui.imageviewer.css",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/report/com_task/pindexinfo.html": {
+				"resources": [
+					"page/report/com_task/pindexlist.html",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/home/work.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf",
+					"js/common/utils.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/offline.js",
+					"js/common/menu.js"
+				],
+				"refer": [
+					"page/common/barcode_scan.html",
+					"page/more/work/addSend4Test.html",
+					"page/more/work/addReport.html",
+					"page/more/work/addReportList.html",
+					"page/more/work/list.html",
+					"page/report/query/main.html",
+					"page/more/work/record.html",
+					"page/more/work/sftList.html",
+					"page/more/work/infoDetail.html",
+					"page/more/work/sftHistoryList.html",
+					"page/more/project/index.html",
+					"page/more/project/list.html",
+					"page/more/work/infoList.html",
+					"page/more/company/qyxxsh.html",
+					"page/more/Bill/addBill.html",
+					"page/more/Bill/billList.html",
+					"page/more/work/sftHistoryList1.html",
+					"page/more/work/addSFT1.html",
+					"page/more/exchange/index.html",
+					"page/more/exchange/addExchange.html"
+				],
+				"priority": 0
+			},
+			"page/home/message.html": {
+				"resources": [
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"js/common/utils.js",
+					"fonts/iconfont.ttf",
+					"fonts/mui.ttf",
+					"images/wuliu.png",
+					"images/completed.png",
+					"images/1234.png",
+					"images/system.png",
+					"images/association.png",
+					"images/system1.png"
+				],
+				"refer": [
+					"page/message/index.html"
+				],
+				"priority": 0
+			},
+			"page/common/showStr.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/work/addCC.html": {
+				"resources": [
+					"js/common/utils.js",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/mui/mui.min.css",
+					"css/common/userlist.css",
+					"css/common/pictures.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/img-thumb.css",
+					"css/common/more_check.css",
+					"fonts/iconfont.ttf",
+					"js/common/file.js",
+					"js/mui/mui.zoom.js",
+					"js/common/watermark.min.js",
+					"images/jiahao.png",
+					"js/common/userlist.js",
+					"css/common/feedback.css",
+					"js/mui/mui.imageViewer.js",
+					"js/core/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"js/common/offline.js",
+					"css/common/work.css",
+					"js/common/pictures.js",
+					"images/photo.png"
+				],
+				"refer": [
+					"page/more/check/project.html",
+					"page/common/project.html",
+					"page/common/position.html",
+					"page/common/dicselect.html",
+					"page/common/select_list.html",
+					"page/common/steelBarModel.html"
+				],
+				"priority": 0
+			},
+			"page/common/project.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"page/common/select_list.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/addOSS.html": {
+				"resources": [
+					"css/common/userlist.css",
+					"css/common/pictures.css",
+					"js/common/pictures.js",
+					"css/common/work.css",
+					"css/mui/mui.imageviewer.css",
+					"images/photo.png",
+					"css/common/img-thumb.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/work/addCuring.html": {
+				"resources": [
+					"css/common/pictures.css",
+					"js/common/pictures.js",
+					"css/common/work.css",
+					"images/photo.png",
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/iconfont.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/work/addSend4Test.html": {
+				"resources": [
+					"css/common/userlist.css",
+					"css/common/pictures.css",
+					"fonts/mui.ttf",
+					"css/mui/mui.imageviewer.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/common/work.css",
+					"fonts/iconfont.ttf",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/common/project.html",
+					"page/more/work/addSFTItem.html",
+					"page/common/checkItem.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/addSFTItem.html": {
+				"resources": [
+					"css/common/userlist.css",
+					"css/common/pictures.css",
+					"css/common/work.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					null,
+					"images/photo.png",
+					"images/jiahao.png"
+				],
+				"refer": [
+					"page/common/barcode_scan.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/addCAR.html": {
+				"resources": [
+					"css/common/pictures.css",
+					"js/common/pictures.js",
+					"css/common/work.css",
+					"images/photo.png",
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/iconfont.css"
+				],
+				"refer": [
+					"page/more/work/checkAddress.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/checkAddress.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/common/pictures.css",
+					"fonts/mui.ttf",
+					"css/common/work.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"images/blue_flag1.png",
+					"images/red.png",
+					"images/blue_flag.png",
+					"images/redios.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/work/addReport.html": {
+				"resources": [
+					"css/common/userlist.css",
+					"css/common/pictures.css",
+					"css/common/work.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"js/common/pictures.js",
+					"images/photo.png"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/common/project.html",
+					"page/more/work/reportItem.html",
+					"page/common/barcode_scan.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/addReportList.html": {
+				"resources": [
+					"css/common/work.css",
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/iconfont.css",
+					"css/common/pictures.css"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/work/addReport.html",
+					"page/more/work/addCR.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/list.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js"
+				],
+				"refer": [
+					"page/more/work/infoDetail.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/addCR.html": {
+				"resources": [
+					"css/common/userlist.css",
+					"css/common/pictures.css",
+					"css/common/work.css",
+					"css/mui/mui.imageviewer.css",
+					"fonts/iconfont.ttf",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"css/common/common.css",
+					"fonts/mui.ttf",
+					"js/common/utils.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"images/photo.png",
+					"images/jiahao.png"
+				],
+				"refer": [
+					"page/more/work/crItem.html",
+					"page/common/barcode_scan.html",
+					"page/more/work/addReport.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/crItem.html": {
+				"resources": [
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"css/common/userlist.css",
+					"js/common/app.js",
+					"css/common/pictures.css",
+					"fonts/mui.ttf",
+					"css/common/work.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf",
+					"images/completed.png",
+					"images/qualified.png",
+					"images/unqualified.png",
+					"images/unrecivecheck.png",
+					"images/photo.png",
+					"images/jiahao.png"
+				],
+				"refer": [
+					"page/common/barcode_scan.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/reportItem.html": {
+				"resources": [
+					"css/common/userlist.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/common/pictures.css",
+					"fonts/mui.ttf",
+					"css/common/work.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/iconfont.css",
+					"images/qualified.png",
+					"fonts/iconfont.ttf",
+					"images/unrecivecheck.png",
+					"images/unreport.png",
+					"images/unqualified.png",
+					"images/photo.png",
+					"images/jiahao.png"
+				],
+				"refer": [
+					"page/common/barcode_scan.html",
+					"page/more/work/addCCReport.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/addCCReport.html": {
+				"resources": [
+					"css/common/pictures.css",
+					"css/common/work.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/common/utils.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"images/photo.png",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/common/checkItem.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/work/sftList.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"css/common/menuinpage.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/work/addReport.html",
+					"page/more/work/addCR.html",
+					"page/more/work/sftListDetail.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/sftListDetail.html": {
+				"resources": [
+					"css/common/userlist.css",
+					"css/common/pictures.css",
+					"css/common/work.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/common.css",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"fonts/mui.ttf",
+					"js/common/utils.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"images/photo.png",
+					"images/jiahao.png"
+				],
+				"refer": [
+					"page/more/work/crItem.html",
+					"page/more/work/sftListItemDetail.html",
+					"page/common/barcode_scan.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/sftListItemDetail.html": {
+				"resources": [
+					"images/qualified.png",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"images/report_qualified.png",
+					"images/reaceive_qualified.png",
+					"css/common/userlist.css",
+					"css/common/pictures.css",
+					"css/common/work.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/work/infoDetail.html": {
+				"resources": [
+					"css/common/userlist.css",
+					"css/common/pictures.css",
+					"css/common/work.css",
+					"css/mui/mui.imageviewer.css",
+					"css/common/img-thumb.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"js/common/pictures.js",
+					"images/photo.png",
+					"images/default_img.png",
+					"images/head.jpg",
+					"js/libs/DMobileFrame_DownLoadUtil.js",
+					"js/libs/zepto.min.js",
+					"js/mui/mui.imageViewer.js",
+					"images/img_error.jpg",
+					"images/default_img1.png"
+				],
+				"refer": [
+					"page/more/work/editOSS.html",
+					"page/more/work/checkAddress.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/sftHistoryList.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/menuinpage.css",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"css/mui/mui.min.css"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/work/sftListDetail.html"
+				],
+				"priority": 0
+			},
+			"page/more/project/index.html": {
+				"resources": [
+					"css/common/pictures.css",
+					"js/common/pictures.js",
+					"css/common/work.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/common/localAddress.html"
+				],
+				"priority": 0
+			},
+			"page/common/localAddress.html": {
+				"resources": [
+					"css/mui/mui.indexedlist.css",
+					"css/mui/mui.min.css",
+					"page/common/anchor.html",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"page/common/anchor.html"
+				],
+				"priority": 0
+			},
+			"page/common/anchor.html": {
+				"resources": [
+					"images/pink.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/project/list.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"css/common/menuinpage.css",
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"css/common/common.css",
+					"js/common/utils.js"
+				],
+				"refer": [
+					"page/more/project/index.html",
+					"page/more/project/edit.html",
+					"page/more/project/add.html"
+				],
+				"priority": 0
+			},
+			"page/more/project/edit.html": {
+				"resources": [
+					"css/common/work.css",
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/common/utils.js"
+				],
+				"refer": [
+					"page/common/localAddress.html",
+					"page/more/project/relation_company_list.html",
+					"page/more/project/building_list.html"
+				],
+				"priority": 0
+			},
+			"page/message/index.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"js/plugin/arttmpl.js",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"js/common/utils.js",
+					"js/common/menu.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/more/project/add.html": {
+				"resources": [
+					"css/common/work.css",
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/utils.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css"
+				],
+				"refer": [
+					"page/common/localAddress.html"
+				],
+				"priority": 0
+			},
+			"page/me/contact.html": {
+				"resources": [
+					"css/mui/mui.indexedlist.css",
+					"css/common/iconfont.css",
+					"css/mui/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"page/me/company_user.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"css/mui/mui.indexedlist.css",
+					"css/mui/mui.min.css",
+					"css/common/iconfont.css",
+					"js/mui/mui.min.js",
+					"js/common/offline.js",
+					"js/common/app.js",
+					"fonts/iconfont.ttf",
+					"css/common/common.css",
+					"js/common/utils.js",
+					"images/head.jpg"
+				],
+				"refer": [
+					"page/company_user/add_user.html",
+					"page/company_user/user_detail.html",
+					"page/common/contact_scan.html",
+					"page/company_user/apply_user_check.html"
+				],
+				"priority": 0
+			},
+			"page/company_user/add_user.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"js/mui/mui.min.js",
+					"js/common/utils.js",
+					"js/common/app.js",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/common/contact_scan.html"
+				],
+				"priority": 0
+			},
+			"page/company_user/user_detail.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/utils.js",
+					"js/common/app.js",
+					"js/common/offline.js",
+					"css/mui/mui.min.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf",
+					"images/head.jpg"
+				],
+				"refer": [
+					"page/company_user/edit_user.html"
+				],
+				"priority": 0
+			},
+			"page/company_user/edit_user.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/utils.js",
+					"js/common/app.js",
+					"css/mui/mui.min.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/common/iconfont.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/me/company_user.html"
+				],
+				"priority": 0
+			},
+			"page/more/project/relation_company_list.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/utils.js"
+				],
+				"refer": [
+					"page/more/project/add.html",
+					"page/more/project/add_relation_company.html",
+					"page/more/project/edit_relation_company.html"
+				],
+				"priority": 0
+			},
+			"page/more/project/add_relation_company.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/utils.js",
+					"js/common/app.js",
+					"css/mui/mui.min.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/common/work.css"
+				],
+				"refer": [
+					"page/common/select_list.html"
+				],
+				"priority": 0
+			},
+			"page/more/project/edit_relation_company.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/utils.js",
+					"js/common/app.js",
+					"css/mui/mui.min.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/common/work.css"
+				],
+				"refer": [
+					"page/common/select_list.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/infoList.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html"
+				],
+				"priority": 0
+			},
+			"page/more/project/batch_add_building.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/utils.js",
+					"js/common/app.js",
+					"css/mui/mui.min.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/common/work.css"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/common/localAddress.html"
+				],
+				"priority": 0
+			},
+			"page/more/project/building_list.html": {
+				"resources": [
+					"css/mui/mui.min.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"js/mui/mui.min.js",
+					"js/common/app.js",
+					"js/common/utils.js"
+				],
+				"refer": [
+					"page/more/project/batch_add_building.html",
+					"page/more/project/add_building.html",
+					"page/more/project/edit_relation_company.html",
+					"page/more/project/edit_building.html"
+				],
+				"priority": 0
+			},
+			"page/more/project/add_building.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/utils.js",
+					"js/common/app.js",
+					"css/mui/mui.min.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/common/work.css"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/common/localAddress.html"
+				],
+				"priority": 0
+			},
+			"page/more/project/edit_building.html": {
+				"resources": [
+					"js/mui/mui.min.js",
+					"js/common/utils.js",
+					"js/common/app.js",
+					"css/mui/mui.min.css",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"css/common/work.css"
+				],
+				"refer": [
+					"page/common/select_list.html",
+					"page/common/localAddress.html"
+				],
+				"priority": 0
+			},
+			"page/more/company/qyxxsh.html": {
+				"href": "page/more/company/qyxxsh.html",
+				"priority": 6
+			},
+			"page/me/company_show.html": {
+				"resources": [],
+				"refer": [
+					"page/me/company.html"
+				],
+				"priority": 0
+			},
+			"page/me/user_auth.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/addCAR1.html": {
+				"resources": [],
+				"refer": [
+					"page/more/work/checkAddress.html",
+					"page/more/work/addCR.html"
+				],
+				"priority": 0
+			},
+			"page/more/Bill/addBill.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/Bill/showPayBill.html",
+					"page/more/Bill/uploadPayVoucher.html",
+					"page/more/Bill/billList.html"
+				],
+				"priority": 0
+			},
+			"page/more/Bill/showPayBill.html": {
+				"resources": [],
+				"refer": [
+					"page/more/Bill/billDetail.html",
+					"page/more/Bill/billList.html"
+				],
+				"priority": 0
+			},
+			"page/more/Bill/billList.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/Bill/billDetail.html"
+				],
+				"priority": 0
+			},
+			"page/more/Bill/uploadPayVoucher.html": {
+				"resources": [],
+				"refer": [
+					"page/more/Bill/billDetail.html"
+				],
+				"priority": 0
+			},
+			"page/more/Bill/editBillDetail.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/Bill/showPayBill.html",
+					"page/more/Bill/uploadPayVoucher.html"
+				],
+				"priority": 0
+			},
+			"page/more/Bill/billDetail.html": {
+				"resources": [],
+				"refer": [
+					"page/more/Bill/editBillDetail.html",
+					"page/more/Bill/showPayBill.html",
+					"page/more/Bill/applyRefund.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/sftHistoryList1.html": {
+				"resources": [],
+				"refer": [
+					"page/more/work/sftListDetail1.html",
+					"page/common/select_list.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/sftListDetail1.html": {
+				"resources": [],
+				"refer": [
+					"page/more/work/sftListItemDetail.html",
+					"page/more/work/editSFT1.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/editSFT1.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/work/editSFTItem.html",
+					"page/common/checkItem.html"
+				],
+				"priority": 0
+			},
+			"register_company0.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"register_company.html",
+					"register_company1.html",
+					"register_company2.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/addSFT1.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/work/editSFTItem.html",
+					"page/common/checkItem.html"
+				],
+				"priority": 0
+			},
+			"page/more/Bill/applyRefund.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html"
+				],
+				"priority": 0
+			},
+			"page/more/exchange/index.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/exchange/list.html",
+					"page/more/exchange/unicodeList.html"
+				],
+				"priority": 0
+			},
+			"page/more/exchange/list.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/exchange/exchangeDetail.html"
+				],
+				"priority": 0
+			},
+			"page/more/exchange/unicodeList.html": {
+				"resources": [],
+				"refer": [
+					"page/more/exchange/addOrderUnicode.html",
+					"page/more/exchange/addDisorderUnicode.html",
+					"page/more/exchange/subUnicode.html"
+				],
+				"priority": 0
+			},
+			"page/more/exchange/addOrderUnicode.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/exchange/subUnicode.html"
+				],
+				"priority": 0
+			},
+			"page/more/exchange/subUnicode.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/exchange/exchangeDetail.html"
+				],
+				"priority": 0
+			},
+			"page/more/exchange/addDisorderUnicode.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/exchange/subUnicode.html"
+				],
+				"priority": 0
+			},
+			"page/more/exchange/addExchange.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/exchange/list.html",
+					"page/more/exchange/unicodeList.html"
+				],
+				"priority": 0
+			},
+			"page/more/exchange/exchangeDetail.html": {
+				"resources": [],
+				"refer": [
+					"page/more/exchange/editExchangeDetail.html",
+					"page/more/exchange/subUnicode.html"
+				],
+				"priority": 0
+			},
+			"page/more/exchange/editExchangeDetail.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/exchange/unicodeList.html"
+				],
+				"priority": 0
+			},
+			"register_company1.html": {
+				"resources": [],
+				"refer": [
+					"register_company2.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/editSFTItem.html": {
+				"resources": [],
+				"refer": [
+					"page/common/select_list.html",
+					"page/more/work/editSFTItemCC.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/editSFTItemCC.html": {
+				"resources": [],
+				"refer": [
+					"page/common/barcode_scan.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/addOSS1.html": {
+				"resources": [],
+				"refer": [
+					"page/more/work/infoDetail.html"
+				],
+				"priority": 0
+			},
+			"page/more/work/editOSS.html": {
+				"resources": [],
+				"refer": [
+					"page/more/work/infoDetail.html"
+				],
+				"priority": 0
+			},
+			"page/company_user/apply_user_check.html": {
+				"resources": [],
+				"refer": [
+					"page/company_user/edit_user.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"images/yellow2.png",
+				"guide.html",
+				"page/common/workman.html",
+				"images/arrowR-LT-hover.png",
+				"js/mui/demo/city.data.js",
+				"images/yellowbig.png",
+				"images/reaceive_unqualified.png",
+				"images/arrowL-LT-hover.png",
+				"css/common/some.css",
+				"js/common/exif.js",
+				"images/arrowD-collapse.png",
+				"images/report_unqualified.png",
+				"page/more/work/addSFT.html",
+				"page/more/work/addSFTList.html",
+				"images/yellow.png",
+				"images/reportArrow.jpg",
+				"css/common/register.css",
+				"css/page/more/construction_diary/index.css",
+				"page/company_user/search.html",
+				"js/mui/demo/city.data-3.js",
+				"images/arrowL-LT.png",
+				"page/common/localAddressSub.html"
+			]
+		}
+	},
+	"fullscreen": false,
+	"unpackage": [
+		"js/common/ctrls.js",
+		"js/plugin/websql.js",
+		"js/update.json"
+	]
+}

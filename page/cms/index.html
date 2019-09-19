@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<title>政策法规</title>
+		<link href="../../css/mui/mui.min.css" rel="stylesheet" />
+		<link href="../../css/common/common.css" rel="stylesheet" />
+	</head>
+
+	<body style="background-color: #ffffff;">
+		<header class="mui-bar mui-bar-nav">
+			<!--<a class="mui-action-back mui-icon mui-pull-left" style="font-size:14px;top:6px">返回</a>-->
+			<h1 id="title" class="mui-title">政策法规</h1>
+		</header>
+		<div id="content" style="margin-top:44px;">
+			<iframe id="faqFrame" style="height:calc(100% - 44px) ;width:100%;position:absolute;" frameborder="no" border="0" marginwidth="0" marginheight="0" allowtransparency="yes">
+				
+			</iframe>
+		</div>		
+	</body>
+	<script src="../../js/mui/mui.min.js"></script>
+	<script src="../../js/common/app.js"></script>
+	<script type="text/javascript">		
+		(function($, doc) {
+			$.init();
+			var url = 'http://htjdb.htzhcs.com/index.php?s=/cms/ban_shi_zhi_nan/index1.html';
+			doc.getElementById('faqFrame').src = url;	
+			$.plusReady(function() {
+				app.closeWaiting();
+				// 获取窗口对象
+				webview = plus.webview.currentWebview();
+				// show
+				//webview.show("pop-in");
+			})
+			
+		}(mui, document));
+	</script>
+
+</html>

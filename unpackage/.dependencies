@@ -1,0 +1,187 @@
+{
+  "page/common/position.html": {
+    "href": "page/common/position.html",
+    "resources": [],
+    "priority": 0
+  },
+  "page/common/project.html": {
+    "href": "page/common/project.html",
+    "resources": [],
+    "refer": [],
+    "priority": 1
+  },
+  "page/common/checkItem.html": {
+    "href": "page/common/checkItem.html",
+    "resources": [],
+    "priority": 3
+  },
+  "page/more/work/addCCReport.html": {
+    "href": "page/more/work/addCCReport.html",
+    "resources": [],
+    "priority": 6
+  },
+  "page/more/work/checkAddress.html": {
+    "href": "page/more/work/checkAddress.html",
+    "resources": [],
+    "priority": 7
+  },
+  "page/more/work/addSFTItem.html": {
+    "href": "page/more/work/addSFTItem.html",
+    "resources": [],
+    "refer": [],
+    "priority": 5
+  },
+  "page/more/work/crItem.html": {
+    "href": "page/more/work/crItem.html",
+    "resources": [],
+    "refer": [],
+    "priority": 6
+  },
+  "page/more/work/reportItem.html": {
+    "href": "page/more/work/reportItem.html",
+    "resources": [],
+    "refer": [],
+    "priority": 8
+  },
+  "page/more/work/addCR.html": {
+    "href": "page/more/work/addCR.html",
+    "resources": [],
+    "refer": [],
+    "priority": 6
+  },
+  "page/more/company/qyxxsh.html": {
+    "href": "page/more/company/qyxxsh.html",
+    "priority": 6
+  },
+  "page/common/localAddress.html": {
+    "href": "page/common/localAddress.html",
+    "resources": [],
+    "refer": [],
+    "priority": 7
+  },
+  "page/more/project/add.html": {
+    "href": "page/more/project/add.html",
+    "resources": [],
+    "refer": [],
+    "priority": 7
+  },
+  "page/more/project/add_relation_company.html": {
+    "href": "page/more/project/add_relation_company.html",
+    "resources": [],
+    "refer": [],
+    "priority": 9
+  },
+  "page/more/project/edit_relation_company.html": {
+    "href": "page/more/project/edit_relation_company.html",
+    "resources": [],
+    "refer": [],
+    "priority": 10
+  },
+  "page/more/project/relation_company_list.html": {
+    "href": "page/more/project/relation_company_list.html",
+    "resources": [],
+    "refer": [],
+    "priority": 9
+  },
+  "page/more/project/edit_building.html": {
+    "href": "page/more/project/edit_building.html",
+    "resources": [],
+    "refer": [],
+    "priority": 10
+  },
+  "page/more/project/batch_add_building.html": {
+    "href": "page/more/project/batch_add_building.html",
+    "resources": [],
+    "refer": [],
+    "priority": 11
+  },
+  "page/more/project/add_building.html": {
+    "href": "page/more/project/add_building.html",
+    "resources": [],
+    "refer": [],
+    "priority": 12
+  },
+  "page/more/project/building_list.html": {
+    "href": "page/more/project/building_list.html",
+    "resources": [],
+    "refer": [],
+    "priority": 10
+  },
+  "page/more/work/sftListItemDetail.html": {
+    "href": "page/more/work/sftListItemDetail.html",
+    "resources": [],
+    "priority": 8
+  },
+  "page/more/work/sftListDetail.html": {
+    "href": "page/more/work/sftListDetail.html",
+    "resources": [],
+    "refer": [],
+    "priority": 8
+  },
+  "page/home/work.html": {
+    "href": "page/home/work.html",
+    "resources": [],
+    "refer": [],
+    "priority": 3
+  },
+  "page/company_user/edit_user.html": {
+    "href": "page/company_user/edit_user.html",
+    "resources": [],
+    "refer": [],
+    "priority": 4
+  },
+  "page/company_user/user_detail.html": {
+    "href": "page/company_user/user_detail.html",
+    "resources": [],
+    "refer": [],
+    "priority": 4
+  },
+  "page/company_user/add_user.html": {
+    "href": "page/company_user/add_user.html",
+    "resources": [],
+    "refer": [],
+    "priority": 5
+  },
+  "page/user/password.html": {
+    "href": "page/user/password.html",
+    "resources": [],
+    "priority": 5
+  },
+  "page/me/projects.html": {
+    "href": "page/me/projects.html",
+    "resources": [],
+    "priority": 6
+  },
+  "page/user/user_common.html": {
+    "href": "page/user/user_common.html",
+    "resources": [],
+    "priority": 7
+  },
+  "page/me/feedback.html": {
+    "href": "page/me/feedback.html",
+    "resources": [],
+    "priority": 8
+  },
+  "page/me/offSubmit.html": {
+    "href": "page/me/offSubmit.html",
+    "resources": [],
+    "priority": 9
+  },
+  "page/me/help.html": {
+    "href": "page/me/help.html",
+    "resources": [],
+    "priority": 10
+  },
+  "page/home/me.html": {
+    "href": "page/home/me.html",
+    "resources": [],
+    "refer": [],
+    "priority": 4
+  },
+  "login.html": {
+    "href": "login.html",
+    "resources": [],
+    "refer": [],
+    "priority": 0
+  }
+}

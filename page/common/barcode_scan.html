@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<title>扫描二维码</title>
+		<link href="../../css/mui/mui.min.css" rel="stylesheet" />
+		<link href="../../css/common/common.css" rel="stylesheet" />
+		<style type="text/css">
+			#bcid {
+				width: 100%;
+				position: absolute;
+				top: 44px;
+				left: 0px;
+				right: 0px;
+				bottom: 44px;
+				text-align: center;
+			}
+			
+			.tip {
+				color: #333333;
+				font-weight: ;
+				text-shadow: 0px -1px #103E5C;
+			}
+			
+			.footer {
+				width: 100%;
+				height: 44px;
+				background-color: #0287E4 !important;
+				position: fixed;
+				color: #fff;
+				bottom: 0;
+				font-size: 16px;
+				text-align: center;
+				line-height: 44px;
+			}
+		</style>
+	</head>
+
+	<body style="background-color: #000000;">
+		<header class="mui-bar mui-bar-nav">
+			<a id="cancel" class="mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">二维码扫描</h1>
+			<a id="aHistory" class="mui-icon mui-pull-right" style="font-size:14px;top:6px;display:none;">历史列表</a>
+		</header>
+		<div id="bcid">
+			<div style="height:40%"></div>
+			<p class="tip" style="color:#ffffff;">... 载 入 中 ...</p>
+		</div>
+		<div class="footer">
+			请将二维码放入框内，即可自动扫描
+		</div>
+	</body>
+	<script src="../../js/mui/mui.min.js"></script>
+	<script src="../../js/common/app.js"></script>
+	<script type="text/javascript">
+		(function($, doc) {
+			$.init();
+
+			var ws = null,
+				wo = null;
+			var scan = null,
+				domready = false;
+			var backword = null,
+			    redirect = null,
+			    menuid = null;
+
+			function plusReady() {
+				if(ws || !window.plus || !domready) {
+					return;
+				}
+				// 获取窗口对象
+				ws = plus.webview.currentWebview();
+				wo = ws.opener();
+				backword = ws.backword;
+				redirect = ws.redirect;
+				menuid = ws.menuid;
+				
+				//
+				if(ws){
+					if(ws.menuid == 'Concretecoupon-20101') {
+						doc.getElementById('aHistory').style.display = 'block';
+						doc.getElementById('aHistory').addEventListener('tap', function(){
+							app.openWindow('work_cc_list', '../more/work/list.html', {});
+							ws.close();
+						});						
+					}else if(ws.menuid == 'Concretecoupon-20102'){
+						doc.getElementById('aHistory').style.display = 'block';
+						doc.getElementById('aHistory').addEventListener('tap', function(){
+							app.openWindow('work_oss_list', '../more/work/oss_list.html', {});
+							ws.close();
+						});	
+					}
+				}
+				
+				// 开始扫描
+				ws.addEventListener('show', function() {
+					scan = new plus.barcode.Barcode('bcid');
+					scan.onmarked = onmarked;
+					scan.start({
+						conserve: true,
+						filename: "_doc/barcode/"
+					});
+				});
+				// 显示页面并关闭等待框
+				ws.show("pop-in");
+				document.getElementById("cancel").addEventListener("tap", function() {
+					scan.cancel();
+					$.back();
+				});
+			}
+			if(window.plus) {
+				plusReady();
+			} else {
+				//document.addEventListener("plusready", plusReady, false);
+			}
+			// 监听DOMContentLoaded事件 -- 这个有什么用
+			document.addEventListener("DOMContentLoaded", function() {
+				domready = true;
+				//plusReady();
+				document.addEventListener("plusready", plusReady, false);
+			}, false);
+			// 二维码扫描成功
+			function onmarked(type, result, file) {
+				result = result.replace(/\n/g, '');
+				// 构件扫码查询
+				if(wo && wo.id == 'componentQuery') {
+					app.showWaiting();
+					var newweb = app.openWindow('scanDetail', '../more/material/scanDetail.html', {'url' : result});
+				}else if(wo && wo.id == 'addSFTItem') {
+					app.showWaiting();
+					mui.fire(wo, 'setNewCC', {'result':result});
+				}else if(wo && wo.id == 'addCR') {
+					app.showWaiting();
+					app.openWindow('Concretecoupon-20104', '../more/work/addCAR.html', {'openerId':'addCR', 'result' : result});
+				}else if(wo && wo.id == 'crItem') {
+					app.showWaiting();
+					// itemid
+					var itemid = ws.itemid;
+					app.openWindow('Concretecoupon-20104', '../more/work/addCAR.html', {'openerId':'crItem', 'result' : result, 'itemid':itemid});
+					//mui.fire(wo, 'refreshCCItem', {'result':result});
+				}else if(wo && wo.id == 'reportItem') {
+					app.showWaiting();
+					var itemid = ws.itemid;
+					app.openWindow('Concretecoupon-20104', '../more/work/addCCReport.html', {'openerId':'reportItem', 'result' : result, 'itemid':itemid});
+				}else if(wo && wo.id == 'editSFTItemCC') {
+					app.showWaiting();
+					var itemid = ws.itemid;var strType = ws.type;var strProjectName = ws.projectname;var strProjectid = ws.projectid;var strBuildingId = ws.buildingid;
+					app.openWindow('addCC1', '../more/work/addCC1.html', 
+					{'openerId':'editSFTItemCC', 'result' : result, 'itemid':itemid, 'type':strType, 
+					'projectname':strProjectName, 'projectid':strProjectid, 'buildingid':strBuildingId});
+				}else if(ws && ws.menuid == 'Concretecoupon-20117') {
+					app.showWaiting();
+					// 跳转到新页面输出该二维码内容
+					var str = "http://20"+ result +".mohurd.chinalinkhouse.com/"
+					app.openWindow('showStr', 'showStr.html', {'result' : str});	
+				}else{
+					// 判断是否为url，如是url则在iframe中展示，否则直接展示为字符串
+					if(app.isUrl(result)) {
+						// 跳转到新页面输出该二维码内容
+					    app.openWindow('showStr', 'showStr.html', {'result' : result});					    
+					}else{
+						// 字符串
+						// 有下一页面
+					    if(redirect != null && menuid != null){
+					    	app.openWindow(menuid, '../' + redirect, {'result' : result});
+					    } else{
+					    	// 跳转到新页面输出该二维码内容
+					    	app.openWindow('showStr', 'showStr.html', {'result' : result});
+					    }
+					}
+				}
+                ws.close();
+			}
+		}(mui, document));
+	</script>
+
+</html>

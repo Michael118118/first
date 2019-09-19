@@ -1,0 +1,229 @@
+/*自 sftlist 考出来的css ,暂时不知有没有用*/
+
+
+.rprogress {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 140px;
+	height: 140px;
+	margin-left: -70px;
+	margin-top: -70px;
+	background-image: url(../images/arecord.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 30px 30px;
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 5px;
+	display: none;
+	-webkit-transition: .15s;
+}
+
+.rschedule {
+	background-color: rgba(0, 0, 0, 0);
+	border: 5px solid rgba(0, 183, 229, 0.9);
+	opacity: .9;
+	border-left: 5px solid rgba(0, 0, 0, 0);
+	border-right: 5px solid rgba(0, 0, 0, 0);
+	border-radius: 50px;
+	box-shadow: 0 0 15px #2187e7;
+	width: 46px;
+	height: 46px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -23px;
+	margin-top: -23px;
+	-webkit-animation: spin 1s infinite linear;
+	animation: spin 1s infinite linear;
+}
+
+.r-sigh {
+	display: none;
+	border-radius: 50px;
+	box-shadow: 0 0 15px #2187e7;
+	width: 46px;
+	height: 46px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -23px;
+	margin-top: -23px;
+	text-align: center;
+	line-height: 46px;
+	font-size: 40px;
+	font-weight: bold;
+	color: #2187e7;
+}
+
+.rprogress-sigh {
+	background-image: none !important;
+}
+
+.rprogress-sigh .rschedule {
+	display: none !important;
+}
+
+.rprogress-sigh .r-sigh {
+	display: block !important;
+}
+
+.rsalert {
+	font-size: 12px;
+	color: #bbb;
+	text-align: center;
+	position: absolute;
+	border-radius: 5px;
+	width: 130px;
+	margin: 5px 5px;
+	padding: 5px;
+	left: 0px;
+	bottom: 0px;
+}
+
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+#h {
+	background: #fff;
+	border: solid 1px #ddd;
+	padding: 10px !important;
+	font-size: 16px !important;
+	font-family: verdana !important;
+	line-height: 18px !important;
+	overflow: visible;
+	position: absolute;
+	left: -1000px;
+	right: 0px;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.cancel {
+	background-color: darkred;
+}
+
+
+/*卡片*/
+
+.mui-input-row {
+	padding: 3px;
+}
+
+.infoproperty {
+	display: table-cell;
+	padding: 0px 0px 0px 20px;
+	width: 85px;
+	line-height: 20px;
+	font-size: 15px;
+	vertical-align: top;
+}
+
+.infoproperty1 {
+	display: table-cell;
+	padding: 0px 25px 0px 25px;
+	width: 220px;
+	line-height: 20px;
+	font-size: 15px;
+	vertical-align: top;
+}
+
+.infoproperty2 {
+	display: table-cell;
+	padding: 0px 25px 0px 25px;
+	width: 180px;
+	line-height: 20px;
+	font-size: 15px;
+	vertical-align: top;
+}
+
+.infoproperty3 {
+	display: table-cell;
+	padding: 0px 0px 0px 25px;
+	line-height: 20px;
+	font-size: 15px;
+	vertical-align: top;
+}
+
+.infovalue {
+	display: table-cell;
+	padding: 0px 5px;
+	line-height: 20px;
+	font-size: 15px;
+	word-wrap: break-word;
+	vertical-align: middle;
+	width: 44vw;
+}
+
+.row {
+	width: auto;
+	padding: 0 10px;
+	margin: 0;
+}
+
+.title {
+	color: #fff;
+	font-size: 1.2em;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1em;
+	display: inline-block;
+	text-decoration: none;
+	padding-left: 10px;
+	color: #35b5d2;
+	float: left
+}
+
+.iconfont {
+	color: #fff;
+	font-size: 1.1em;
+}
+
+.bottom {
+	border-bottom: solid 1px #ddd;
+	padding-bottom: 10px;
+	margin-bottom: 10px
+}
+
+.mui-slider {
+	width: 100% !important;
+}
+
+.mui-slider-item img {}
+
+.name1 {
+	display: inline-block;
+	padding: 0 3px;
+	font-size: 14px;
+	background-color: #B9B9B9;
+	opacity: 0.5;
+	color: #fff;
+	border-radius: 5px;
+	;
+}
+
+.infofile {
+	display: block;
+	padding: 0px;
+	padding-left: 20px;
+	line-height: 24px;
+	font-size: 14px;
+	color: #007aff;
+	max-width: 80vw;
+	word-wrap: break-word;
+}

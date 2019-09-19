@@ -1,0 +1,31 @@
+
+.mui-col-xs-4{
+	/*height:31.484vw*/
+	height:23.795vw;
+	width:25%;
+}
+
+@media (min-width: 400px){
+	.mui-col-sm-3 {
+        height:23.795vw
+	}
+}
+
+.clh-li{
+	list-style-type: none;
+	padding:5px;
+}
+.clh-li a{
+	height:100%;
+	width:100%;
+	/*padding-left:0px !important;*/
+	padding-right:0px !important;
+	padding:0px !important;
+	margin:0px !important;
+}
+.clh-li a img{
+	height:100%;
+	width:100%;
+	border-radius :5%;
+	border: solid 1px ghostwhite;
+}
